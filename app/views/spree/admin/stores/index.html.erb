@@ -1,0 +1,85 @@
+<% content_for :page_title do %>
+  <%= 'All Stores' %>
+<% end %>
+
+<% content_for :sub_menu do %>
+  <ul id="sub_nav" class="inline-menu">
+    <%= tab :stores %>
+    <%= tab :pending_stores %>
+    <%= tab :approved_stores %>
+    <%= tab :featured_stores %>
+  </ul>
+<% end %>
+
+<% content_for :table_filter_title do %>
+  <%= Spree.t(:search) %>
+<% end %>
+
+<% content_for :table_filter do %>
+  <div>
+    <%= search_form_for [:admin, @search] do |f| %>
+      <%- locals = {:f => f} %>
+        <div>
+          <div class="alpha sixteen columns">
+            <div class="field">
+              <%= f.label :name_cont, Spree.t(:name) %>
+              <%= f.text_field :name_cont %>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <div class="form-buttons actions filter-actions">
+          <%= button Spree.t(:search), 'search' %>
+        </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= button_link_to "Download", "#{admin_users_path}.xls", :icon => 'download' %>
+
+<%= paginate @collection %>
+
+<% if @collection.any? %>
+  <table class="index">
+    <colgroup>
+       <col style="width: 17.6%;">
+       <col style="width: 17.6%;">
+       <col style="width: 17.6%;">
+       <col style="width: 17.6%;">
+       <col style="width: 17.6%;">
+       <col style="width: 12%;">
+    </colgroup>
+    <thead>
+      <tr>
+        <th><%= sort_link @search, :name, 'Name', { :default_order => "asc" } %></th>
+        <th>Approved</th>
+        <th>Featured</th>
+        <th>Products</th>
+        <th>Variants</th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @collection.each do |store| %>
+          <tr id="<%= spree_dom_id store %>" class="<%= cycle('odd', 'even') %>">
+            <td class="align-center"><%= store.name %></td>
+            <td class="align-center"><%= store.approved? ? 'Yes' : 'No'%></td>
+            <td class="align-center"><%= store.featured? ? 'Yes' : 'No'%></td>
+            <td class="align-center"><%= store.products.count %></td>
+            <td class="align-center"><%= variant_count store %></td>
+            <td class="actions">
+              <%= link_to_show store, :no_text => true %>
+              &nbsp;
+              <%= link_to_edit store, :no_text => true, :class => 'edit' %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    No Store Found!
+  </div>
+<% end %>
+
+<%= paginate @collection %>

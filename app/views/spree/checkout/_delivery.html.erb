@@ -1,0 +1,43 @@
+<h2>Delivery</h2>
+<fieldset>
+  <legend>Choose Shipping Option</legend>
+  <div class="checkout-delivery-shipments">
+    <%= form.fields_for :shipments do |ship_form| %>
+      <h3>Select shippping method for <span><%= ship_form.object.stock_location.name %></span> orders</h3>
+      <table class="cart-table">
+        <colgroup>
+          <col width="60%">
+          <col width="30%">
+          <col width="10%">
+        </colgroup>
+        <thead>
+          <% ship_form.object.manifest.each_with_index do |line_item, index| %>
+            <% variant = line_item.variant %>
+            <% product = variant.product %>
+            <% store = product.store %>
+            <% option_values = variant.option_values.pluck(:presentation) %>
+            <tr>
+              <th>PRODUCT: <%= product.name%></th>
+              <th>SKU: <%= variant.sku.split('-', 2)[1] %></th>
+              <th>QTY: <%= line_item.quantity %></th>
+            </tr>
+          <% end %>
+        </thead>
+      </table>
+      <ul class="checkout-delivery-shipment-methods">
+        <% ship_form.object.shipping_rates.each do |rate| %>
+          <li class="checkout-delivery-shipment-method">
+            <label>
+              <%= ship_form.radio_button :selected_shipping_rate_id, rate.id %>
+              <span class="checkout-delivery-shipment-method-name"><%= rate.name == "Default" ? "Standard Shipping (3-5 Business Days)" : rate.name %></span>
+              <span class="checkout-delivery-shipment-method-cost"><%= rate.display_cost %></span>
+            </label>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</fieldset>
+<div class="form-button">
+  <%= submit_tag 'Proceed to Payment Method' %>
+</div>

@@ -1,0 +1,54 @@
+<footer>
+  <div class="footer-container">
+    <div class="footer-layout-left">
+      <figure>
+        <%= logo %>
+      </figure>
+      <ul class="footer-social">
+        <li><a href="https://www.facebook.com/nattyindia/" target="_blank"><%= fa_icon 'facebook' %></a></li>
+        <li><a href="https://www.instagram.com/nattydotin/" target="_blank"><%= fa_icon 'instagram' %></a></li>
+        <li><a href="https://www.twitter.com/nattydotin/" target="_blank"><%= fa_icon 'twitter' %></a></li>
+        <li><a href="https://in.pinterest.com/natty_pins" target="_blank"><%= fa_icon 'pinterest-p' %></a></li>
+      </ul>
+    </div>
+    <ul class="footer-links-lists">
+      <ul class="footer-links">
+        <h1><span>Contact</span><%= link_to 'Contact', spree.contact_path %></h1>
+        <p>080-33130000</p>
+      </ul>
+      <ul class="footer-links">
+        <h1><span>About us</span><%= link_to 'About us', spree.aboutus_path %></h1>
+        <li><%= link_to 'Our Mission', spree.aboutus_path %></li>
+          <li><%= link_to 'Testimonials + Press', spree.aboutus_path+'#testimonial' %></li>
+        <li><a href="#">Partnerships</a></li>
+        <li><%= link_to 'Careers', spree.careers_path %></li>
+        <li><%= link_to 'Contact', spree.contact_path %></li>
+      </ul>
+      <ul class="footer-links">
+        <h1><span>Shop</span><%= link_to 'Shop', spree.signup_path %></h1>
+        <li><%= link_to 'Why Shop With Us?', spree.signup_path+'#whyshop' %></li>
+        <li><%= link_to 'FAQs', spree.faqs_path %></li>
+          <li><%= link_to 'Shipping + Returns', spree.shippingreturns_path %></li>
+        <li><a href="#">Track your order</a></li>
+        <li><a href="#">Wishlist</a></li>
+      </ul>
+      <ul class="footer-links">
+          <h1><span>Sell</span><%= link_to 'Sell', spree.signup_seller_path %> <%= link_to 'FAQs', spree.faqs_path %> <%= link_to 'Shipping + Returns', spree.shippingreturns_path %></h1>
+          <li><%= link_to 'Why Join?', spree.signup_seller_path %></li>
+        <li><%= link_to 'FAQs', spree.faqs_path %></li>
+          <li><%= link_to 'Apply to sell with us', spree.signup_seller_path+'#apply' %></li>
+      </ul>
+    </ul>
+    <div class="footer-subscribe">
+      <h1>Subscribe</h1>
+      <p>Get the best of our curated shop every month.</p>
+      <%= form_for newsletter_signup, url: spree.newsletter_signup_path do |f| %>
+        <%= f.email_field :email , placeholder: 'Enter Email'%>
+        <%= f.submit "Go" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <p>&copy; <%= Time.now.year %> Natty. All Rights Reserved. <a href="#"><em>Terms &amp; Conditions</em></a> and <a href="#"><em>Privacy Policy</em></a>. Site by <a href="//concretelabs.co">Concrete Labs</a></p>
+  </div>
+</footer>

@@ -1,0 +1,10 @@
+<table border="1">
+  <tr>
+    <th>Email</th>
+  </tr>
+  <% Spree::NewsletterSignup.all.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>

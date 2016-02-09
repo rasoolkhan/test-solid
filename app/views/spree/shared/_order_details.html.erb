@@ -1,0 +1,38 @@
+<% if order.has_step?("address") %>
+  <div class="order-basic-info">
+    <h3>Basic Info</h3>
+    <div class="order-bill-address">
+      <h6><%= Spree.t(:billing_address) %> <%= link_to "(edit)", checkout_state_path(:address) unless order.completed? %></h6>
+      <%= render :partial => 'spree/shared/address', :locals => { :email => @order.email, :address => order.bill_address } %>
+    </div>
+    <% if order.has_step?("delivery") %>
+      <div class="order-ship-address">
+        <h6><%= Spree.t(:shipping_address) %> <%= link_to "(edit)", checkout_state_path(:address) unless order.completed? %></h6>
+        <%= render :partial => 'spree/shared/address', :locals => { :email => @order.email, :address => order.ship_address } %>
+      </div>
+    <% end %>
+  </div>
+  <% if order.has_step?("delivery") %>
+    <div class="order-delivery">
+      <h3>Delivery</h3>
+      <div class="order-shipment">
+        <h6>Shipping Option <%= link_to "(edit)", checkout_state_path(:delivery) unless order.completed? %></h6>
+        <ul>
+        <% order.shipments.each do |shipment| %>
+          <li>
+            <%= "#{shipment.stock_location.name}: #{shipment.selected_shipping_rate.name == 'Default' ? 'Standard Shipping' : shipment.selected_shipping_rate.name}" %>
+          </li>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<div class="order-payment">
+  <h3>Payment Method</h3>
+  <h6>Payment Option <%= link_to "(edit)", checkout_state_path(:payment) unless order.completed? %></h6>
+  <div>
+    <% order.payments.valid.each do |payment| %>
+      <%= render payment %><br/>
+    <% end %>
+  </div>
+</div>

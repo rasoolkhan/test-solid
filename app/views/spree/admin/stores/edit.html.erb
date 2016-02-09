@@ -1,0 +1,34 @@
+<% content_for :page_title do %>
+  <%= "Edit Store #{@store.name}" %>
+<% end %>
+
+<% content_for :sub_menu do %>
+  <ul id="sub_nav" class="inline-menu">
+    <%= tab :stores %>
+    <%= tab :pending_stores %>
+    <%= tab :approved_stores %>
+    <%= tab :featured_stores %>
+  </ul>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to 'Back to Stores List', session[:return_to] || admin_stores_url, :icon => 'arrow-left' %></li>
+<% end %>
+
+<%= form_for [:admin, @store], :html => { :multipart => true } do |f| %>
+  <fieldset class="no-border-top">
+    <div class="sixteen columns alpha">
+      <%= f.field_container 'status' do %>
+        <%= f.label 'status' do %>
+          <%= check_box_tag 'status', 'approved', @store.approved? %> Approved
+        <% end %>
+      <% end %>
+      <%= f.field_container 'featured' do %>
+        <%= f.check_box :featured %>
+        <%= f.label :featured %>
+      <% end %>
+    </div>
+    <div><div>
+    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+  </fieldset>
+<% end %>

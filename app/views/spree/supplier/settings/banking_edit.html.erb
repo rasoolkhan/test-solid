@@ -1,0 +1,97 @@
+<% self.title = "Natty : #{@store.name} : Variants" %>
+<% content_for :dashboard do %>
+  <%= render 'spree/shared/error_messages', target: @product %>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center m-t-lg">
+          <h2>Banking Information</h2>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <%= form_for [:supplier, @store.seller], url: supplier_store_settings_banking_path(@store), html: {multipart: true, role: 'form', class: 'form-horizontal settings_banking'} do |f| %>
+                    <div class="form-group">
+                      <%= f.label :bank_name, 'Bank Name *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_name, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_branch, 'Bank Branch *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_branch, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_address, 'Bank Address', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_address, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_account_name, 'Account Name *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_account_name, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_account_number, 'Account Number *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_account_number, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_ifsc, 'IFSC *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_ifsc, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_micr, 'MICR', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_micr, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_pan, 'PAN # *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_pan, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_tin, 'TIN # *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_tin, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :bank_vat, 'VAT # *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_field :bank_vat, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                      <div class="col-sm-4 pull-right right-button">
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: "spree/supplier/layouts/dashboard" %>

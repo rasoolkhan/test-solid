@@ -1,0 +1,7 @@
+$('.stores-show-products-list').append('<%= escape_javascript render(@products) %>');
+<% if @products.count == @count %>
+  $('.paginator').html('<%= escape_javascript(link_to("Load More", store_path(@store, page: @page + 1), remote: true.to_s)) %>');
+<% else %>
+  $('.paginator').remove();
+<% end %>
+$.fancybox.hideLoading();

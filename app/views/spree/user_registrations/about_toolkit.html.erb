@@ -1,0 +1,60 @@
+<% self.title = "Natty : About Toolkit" %>
+<% @body_id = 'page-signup' %>
+<%= render 'spree/shared/error_messages', target: resource %>
+<div class="signup-banner">
+  <%= image_tag 'spree/frontend/seller-signup-banner.png' %>
+</div>
+<div class="signup-content">
+  <%= form_for resource, :as => :spree_user, :url => spree.registration_path(resource), html: {class: 'form-wide'} do |f| %>
+    <div class="learn-more extend-toolkit group">
+      <h1>Your Toolkit</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel leo laoreet, tristique sapien non, porttitor neque. Nullam vitae lectus in neque consectetur scelerisque quis sed eros. Praesent neque diam, lobortis ac eleifend quis, ullamcorper id ex. Nunc leo</p>
+      <div class="learn-more-content learn-more-content-left">
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/about-toolkit-statistics.png' %>
+          <h2>Advanced Statistics</h2>
+          <p>Use our built-in store analytics to track sales, revenue, popular products and more. Optimize your strategy and watch your business grow.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/about-toolkit-order-management.png' %>
+          <h2>Easy Order Management</h2>
+          <p>Track and manage your orders around the clock on your personal Seller Dashboard. Receive order notifications and reminders straight to your inbox.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/about-toolkit-payment-channels.png' %>
+          <h2>Multiple Payment Channels</h2>
+          <p>Accept payments from customers through a variety of secure card, net banking and e-wallet options. We also offer COD.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/about-toolkit-store-front.png' %>
+          <h2>Your Own Storefront</h2>
+          <p>Get your individual storefront and make your brand stand out. Upload unlimited products for free!</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/about-toolkit-support.png' %>
+          <h2>Logistics Support</h2>
+          <p>Get direct package pick-ups from your doorstep through our trusted logistic partners. Generate shipping labels and manifests right from your dashboard.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/about-toolkit-expert-seller.png' %>
+          <h2>Expert Seller Assistance</h2>
+          <p>Use our extensive Seller Handbook for guidelines on every aspect of selling on Natty. Reach out to the support team through our dedicated seller hotline.dashboard.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/about-toolkit-seo.png' %>
+          <h2>Search Engine Optimization</h2>
+          <p>We do the search engine optimization to improve your visibility on search engines.</p>
+        </div>
+        <div class="learn-more-content-item toolkit-last">
+          <%= image_tag 'spree/frontend/about-toolkit-promos.png' %>
+          <h2>Promotional Tools</h2>
+          <p>Run marketing promotions to grow your customer base. Easily create custom coupon  codes or hold a sale at your own convenience.</p>
+        </div>
+      </div>
+      <div class="learn-more-content learn-more-content-right">
+      </div>
+    </div>
+    <div class="spacer-grey"></div>
+    <%= render :partial => 'spree/shared/user_seller_form', :locals => { :f => f } %>
+  <% end %>
+</div>

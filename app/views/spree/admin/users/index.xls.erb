@@ -1,0 +1,16 @@
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Provider</th>
+    <th>Roles</th>
+  </tr>
+  <% Spree::User.all.each do |user| %>
+    <tr>
+      <td><%= "#{user.first_name} #{user.last_name}" %></td>
+      <td><%= user.email %></td>
+      <td><%= user.provider.present? ? user.provider : 'email' %></td>
+      <td><%= user.spree_roles.pluck(:name).join(", ") %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,12 @@
+<%= "Dear #{@user.first_name}," %>
+
+<%= "Congratulations! Your store #{@store.name} has been approved!" %>
+
+Please make sure your banking information is complete by visiting your settings at the following link. Products will not be shown on your page until your banking information is complete.
+<%= supplier_store_settings_banking_url @store %>
+
+You may now start adding products to your store by visiting your dashboard at:
+<%= supplier_store_url @store %>
+
+Thanks,
+Natty.in

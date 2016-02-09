@@ -1,0 +1,112 @@
+<% self.title = 'Natty : Shopping Bab' %>
+<% @body_id = 'cart' %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<div class="cart-heading">
+  <h1>Shopping Bag</h1>
+  <p>You have <%= pluralize @order.line_items.count, 'item', 'items' %> in your bag.</p>
+</div>
+<% if @order.line_items.empty? %>
+  <div class="cart-empty-empty">
+    <p>Your bag is empty.</p>
+    <p><%= link_to 'Continue Shopping', spree.root_path, class: 'button-continue-shopping' %></p>
+  </div>
+<% else %>
+  <%= form_for @order, :url => update_cart_path, :html => {:id => 'update-cart'} do |order_form| %>
+    <table class="cart-table">
+      <colgroup>
+        <col width="8.77%">
+        <col width="37.82%">
+        <col width="15.04%">
+        <col width="17.38%">
+        <col width="10.5%">
+        <col width="10.49%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>S. No</th>
+          <th align="left">Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% order_form.object.line_items.each_with_index do |line_item, index| %>
+          <% variant = line_item.variant %>
+          <% product = variant.product %>
+          <% store = product.store %>
+          <% option_values = variant.option_values.pluck(:presentation) %>
+          <%= order_form.fields_for :line_items, line_item do |item_form| %>
+            <tr class="line-item">
+              <td class="cart-line-sno"><%= index + 1 %></td>
+              <td align="left">
+                <div class="cart-line-product-image">
+                  <%= image_tag product.display_image.attachment(:cart) %>
+                </div>
+                <div class="cart-line-product-description">
+                  <h4><%= link_to line_item.name, store_product_path(store, product) %></h4>
+                  <p>by <%= link_to store.name, store_path(store) %></p>
+                  <h3>SKU : <%= variant.sku.split('-', 2)[1] %></h3>
+                  <h3><%= option_values[0] %><%= " + #{option_values[1]}" if option_values.count > 1 %></h3>
+                </div>
+              </td>
+              <td class="cart-line-amount" data-amount="<%= line_item.price.to_s %>"><%= line_item.single_money.to_html %></td>
+              <td class="cart-line-quantity">
+                <%= link_to fa_icon('minus'), '#', class: 'line_item_quantity_change line_item_quantity_decrement' %>
+                <%= item_form.text_field :quantity, min: 0, class: 'line_item_quantity', size: 5 %>
+                <%= link_to fa_icon('plus'), '#', class: 'line_item_quantity_change line_item_quantity_increment' %>
+              </td>
+              <td class="cart-line-total" data-amount="<%= line_item.amount.to_s %>"><%= line_item.display_amount.to_html unless line_item.quantity.nil? %></td>
+              <td><%= link_to image_tag('spree/frontend/cart-delete.png'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="cart-totals">
+      <div class="cart-total-promo">
+        <div class="cart-total-promo-image">
+          <%= image_tag 'spree/frontend/cart-coupon.png' %>
+        </div>
+        <div class="cart-total-promo-input">
+          <p>Have a Promo Code?</p>
+          <%= order_form.text_field :coupon_code, :size => 10, placeholder: 'Enter Code...' %>
+          <%= button_tag class: 'button-coupon-code', id: 'update-button' do %>
+            >
+          <% end %>
+        </div>
+      </div>
+      <div class="cart-total-amount" data-amount="<%= order_form.object.item_total.to_s %>">
+        <h5>Subtotal</h5>
+        <p><%= order_form.object.display_item_total %></p>
+      </div>
+    </div>
+    <div class="cart-nav">
+      <ul class="cart-nav-icons">
+        <li>
+          <%= image_tag 'spree/frontend/cart-secure.png' %>
+          <p>Secure Payments</p>
+        </li>
+        <li>
+          <%= image_tag 'spree/frontend/cart-buyer.png' %>
+          <p>Buyer Protection</p>
+        </li>
+        <li>
+          <%= image_tag 'spree/frontend/cart-return.png' %>
+          <p>Quick and Easy Returns</p>
+        </li>
+      </ul>
+      <ul class="cart-nav-links">
+        <li>
+          <%= link_to Spree.t(:continue_shopping), spree.root_path, class: 'cart-nav-links-continue' %>
+        </li>
+        <li>
+          <%= button_tag class: 'cart-nav-links-checkout', id: 'checkout-link', name: 'checkout' do %>
+            Proceed to Checkout
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

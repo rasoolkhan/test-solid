@@ -1,0 +1,23 @@
+<a href='<%= store_path store %>'>
+  <li>
+    <% products = store.products.valid %>
+    <% count = products.count.to_a.length %>
+    <% products.limit(2).each do |product| %>
+      <%= image_tag product.variants.first.images.first.attachment.url(:small) %>
+    <% end %>
+    <% if count < 2 %>
+      <% (2 - count).times do %>
+        <img />
+      <% end %>
+    <% end %>
+    <%= image_tag store.image.attachment.url(:small) %>
+    <div class="store-description-panel">
+        <div><%= store.name %></div>
+        <div>
+            <% store.categories.first(2).each do |category| %>
+                <span><%= category.name %>, </span>
+            <% end %>
+        </div>
+    </div>
+  </li>
+</a>

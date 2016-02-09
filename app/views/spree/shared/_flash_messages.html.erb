@@ -1,0 +1,11 @@
+<% flash.each do |message_type, message| %>
+  <div id="error-dialog">
+    <% if message.class == String %>
+      <p><%= message %></p>
+    <% else %>
+      <% message.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

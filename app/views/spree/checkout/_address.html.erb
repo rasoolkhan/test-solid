@@ -1,0 +1,30 @@
+<h2>Basic Information</h2>
+<fieldset class="checkout-address-billing">
+  <div class="form-fields">
+    <div class="field form-field">
+      <%= form.label :email, 'Email' %>
+      <%= form.text_field :email %>
+    </div>
+  </div>
+  <%= form.fields_for :bill_address do |bill_form| %>
+    <legend><%= Spree.t(:billing_address) %></legend>
+    <%= render :partial => 'address_form', :locals => { :form => bill_form, :address_type => 'billing', :address => @order.bill_address } %>
+  <% end %>
+</fieldset>
+<fieldset class="checkout-address-checkbox">
+  <%= check_box_tag 'save_user_address', '1', try_spree_current_user.respond_to?(:persist_order_address) %>
+  <%= label_tag :save_user_address, 'Save Address for Future Orders' %>
+</fieldset>
+<fieldset class="checkout-address-shipping" id="shipping">
+  <%= form.fields_for :ship_address do |ship_form| %>
+    <legend><%= Spree.t(:shipping_address) %></legend>
+    <div class="checkout-address-checkbox">
+      <%= check_box_tag 'order[use_billing]', '1', @order.shipping_eq_billing_address? %>
+      <%= label_tag :order_use_billing, Spree.t(:use_billing_address), :id => 'use_billing' %>
+    </div>
+    <%= render :partial => 'address_form', :locals => { :form => ship_form, :address_type => 'shipping', :address => @order.ship_address } %>
+  <% end %>
+</fieldset>
+<div class="form-button">
+  <%= submit_tag 'Proceed to Delivery' %>
+</div>

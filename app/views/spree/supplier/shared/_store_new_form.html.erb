@@ -1,0 +1,120 @@
+<div class="form-spacer"></div>
+<h5>Company Information</h5>
+<div class="form-field">
+  <%= f.fields_for :seller do |seller| %>
+    <%= seller.label :name, 'Company Name' %>
+    <%= seller.text_field :name, 'data-title': 'Company Name' %>
+  <% end %>
+</div>
+<h6>Address</h6>
+<%= f.fields_for :office_address do |office_address| %>
+  <%= office_address.fields_for :address do |address| %>
+    <div class="form-field">
+      <%= address.label :address1, 'Address Line 1' %>
+      <%= address.text_field :address1, 'data-title': 'Address Line 1' %>
+    </div>
+    <div class="form-field">
+      <%= address.label :address2, 'Address Line 2' %>
+      <%= address.text_field :address2, 'data-title': 'Address 2' %>
+    </div>
+    <div class="form-field form-field-short">
+      <%= address.label :city %>
+      <%= address.text_field :city, 'data-title': 'City' %>
+    </div>
+    <div class="form-field form-field-short form-field-select">
+      <%= address.label :state_id, Spree.t(:state) %>
+      <%= address.collection_select :state_id, address.object.country.states.sort, :id, :name %>
+    </div>
+    <div class="form-field form-field-short">
+      <%= address.label :zipcode, 'Pincode' %>
+      <%= address.text_field :zipcode, validate: true, 'data-title': 'Pincode' %>
+    </div>
+    <div class="form-field form-field-short">
+      <%= address.label :zipcode, 'Phone' %>
+      <%= address.phone_field :phone, 'data-title': 'Phone'  %>
+    </div>
+  <% end %>
+<% end %>
+<div class="form-spacer"></div>
+<h5>Store Information</h5>
+<div class="form-field stores-new-name">
+  <%= f.label :name, 'Store Name' %>
+  <%= f.text_field :name, 'data-title': 'Store Name', autocomplete: 'off' %>
+</div>
+<div class="form-field form-field-short stores-new-slug">
+  <%= f.label :slug, 'Store URL' %>
+  <%= f.text_field :slug, 'data-title': 'Store URL' %>
+  <p>.natty.in</p>
+</div>
+<div class="form-field">
+  <%= f.label :description, 'Store Description' %>
+  <%= f.text_area :description, 'data-title': 'Store Description' %>
+</div>
+<div class="form-field form-field-checkboxes group">
+  <%= f.label 'Store Category' %>
+  <% main_categories.each do |category| %>
+    <div class="form-field-checkbox">
+      <%= check_box_tag 'store_cat[]', category.id, @categories.present? && @categories.include?(category.id.to_s), id: "store_cat_#{category.id}" %>
+      <%= label_tag "store_cat_#{category.id}", content_tag(:span, '', class: 'form-field-checkbox-button') + content_tag(:span, category.name.capitalize, class: 'form-field-checkbox-text') %>
+    </div>
+  <% end %>
+</div>
+<div class="form-field form-field-file">
+  <%= f.fields_for :logo do |store_logo| %>
+    <%= store_logo.label :attachment, 'Logo', class: 'form-field-file-title' %>
+    <%= store_logo.file_field :attachment, 'data-validate': true, 'data-title': 'Logo' %>
+    <%= store_logo.label :attachment, 'Upload Logo Image', class: 'form-field-file-button' %>
+    <p class="form-field-file-text">No Image Uploaded.</p>
+  <% end %>
+</div>
+<div class="form-field form-field-file">
+  <%= f.fields_for :image do |store_image| %>
+    <%= store_image.label :attachment, 'Banner Image', class: 'form-field-file-title' %>
+    <%= store_image.file_field :attachment, 'data-validate': true, 'data-title': 'Banner Image' %>
+    <%= store_image.label :attachment, 'Upload Banner Image', class: 'form-field-file-button' %>
+    <p class="form-field-file-text">No Image Uploaded.</p>
+  <% end %>
+</div>
+<div class="form-spacer"></div>
+<h5>Sample Products</h5>
+<% @product_samples.each do |product_sample| %>
+  <%= f.fields_for :product_samples, product_sample do |ps| %>
+    <div class="form-field form-field-product">
+      <div class="form-field form-field-file">
+        <div class="form-field-file-preview">
+          <div class="form-field-file-preview-blank">
+            <img src="<%= asset_path 'spree/frontend/image-blank.png' %>">
+            <p>No Product Image Uploaded</p>
+          </div>
+        </div>
+        <%= ps.fields_for :image do |psi| %>
+          <%= psi.file_field :attachment, class: 'signup-product-image' %>
+          <%= psi.label :attachment, 'Upload Product Image', class: 'form-field-file-button' %>
+        <% end %>
+      </div>
+      <div class="form-field-product-content">
+        <%= ps.label :name, 'Product Name' %>
+        <%= ps.text_field :name %>
+        <%= ps.label :description, 'Product Description' %>
+        <%= ps.text_field :description %>
+        <%= ps.label :price, 'Product Price' %>
+        <%= ps.text_field :price %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<div class="form-spacer"></div>
+<h5>Social Links</h5>
+<h4>Please provide links to your store's existing social accounts.</h4>
+<% social_list = ['Facebook', 'Twitter', 'Website (or other social links)'] %>
+<% 3.times do |i| %>
+  <div class="form-field">
+    <%= label_tag "social_url_#{i}", social_list[i] %>
+    <%= text_field_tag "social_url[#{i}]", nil, id: "social_url_#{i}", class: "signup-social-url" %>
+  </div>
+<% end %>
+<div class="form-spacer"></div>
+<div class="form-field">
+  <%= f.label :hearaboutus, 'Where did you hear about us?' %>
+  <%= f.text_area :hearaboutus, 'data-title': 'Hear About Us' %>
+</div>

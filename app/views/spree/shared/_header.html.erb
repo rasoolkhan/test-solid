@@ -1,0 +1,312 @@
+<header>
+<div class="header-controls">
+  <nav class="nav-user nav-user-unstuck">
+    <ul>
+      <% if spree_current_user && spree_current_user.is_seller? %>
+        <li><%= link_to 'Visit Dashboard', supplier_store_path(spree_current_user.seller.store) %></li>
+      <% else %>
+        <li><%= link_to 'Start a Store', spree.signup_seller_path %></li>
+      <% end %>
+      <li>
+        <%= link_to image_tag('spree/frontend/bag.png') + content_tag(:em, "(#{cart_count})"), '/cart' %>
+      </li>
+      <li class="profile-li">
+        <% if spree_current_user %>
+          <!-- <%= link_to fa_icon('user', class: 'image-login') + 'Logout', spree.logout_path %> -->
+          <%= link_to fa_icon('user', class: 'image-login logged-in') + spree_current_user.first_name, '#', class: 'user-account-menu' %>
+        <% else %>
+          <%= link_to fa_icon('user', class: 'image-login') + 'Login', spree.login_path %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+  <figure class="logo-unstuck">
+    <%= logo %>
+  </figure>
+  <figure class="logo-stuck">
+    <%= link_to image_tag('logo/natty-small.png') %>
+  </figure>
+   <span class="menu fa fa-bars"></span>
+
+<%= form_tag spree.search_path, class: 'search-form-unstuck', :method => :get do %>
+    <%= search_field_tag :search, params[:keywords], :placeholder => Spree.t(:search) %>
+    <%= fa_icon 'search', class: 'icon-search' %>
+  <% end %>
+  <%= form_tag spree.search_path, class: 'search-form-stuck', :method => :get do %>
+    <%= search_field_tag :search, params[:keywords], :placeholder => Spree.t(:search) %>
+    <%= fa_icon 'search', class: 'icon-search' %>
+  <% end %>
+  <nav class="nav-user nav-user-stuck">
+    <ul>
+      <% if spree_current_user && spree_current_user.is_seller? %>
+        <li><%= link_to 'Visit Dashboard', supplier_store_path(spree_current_user.seller.store) %></li>
+      <% else %>
+        <li><%= link_to 'Start a Store', spree.signup_seller_path %></li>
+      <% end %>
+      <li>
+        <%= link_to image_tag('spree/frontend/bag.png') + content_tag(:em, "(#{cart_count})"), '/cart' %>
+      </li>
+      <li class="profile-li">
+        <% if spree_current_user %>
+          <!-- <%= link_to fa_icon('user', class: 'image-login') + 'Logout', spree.logout_path %> -->
+          <%= link_to fa_icon('user', class: 'image-login logged-in') + spree_current_user.first_name, '#', class: 'user-account-menu' %>
+        <% else %>
+          <%= link_to fa_icon('user', class: 'image-login') + 'Login', spree.login_path %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sub-level-options">
+	<span class="menu-text">MENU</span>
+	<span class="menu-close fa fa-times"></span>
+  </div>
+
+    <div class="user-control-menu">
+        <div class="control-menu-pointer"></div>
+        <ul class="user-control-menu-ul">
+            <li><%= link_to 'Wishlist', '#' %></li>
+            <li><%= link_to 'Orders', '#' %></li>
+            <li><%= link_to 'Message', '#' %></li>
+            <li><%= link_to 'My Reviews', '#' %></li>
+            <li><%= link_to 'Account Settings', '#' %></li>
+            <li><span></span></li>
+            <li><%= link_to 'Logout', spree.logout_path %></li>
+        </ul>
+    </div>
+
+</div> <!--End of header control div -->
+
+<div class="header-content">
+
+  <nav class="nav-categories accordian">
+    <ul class="level-one-ul">
+      <% main_categories.each_with_index do |category, index| %>
+        <li class="level-one-li">
+            <%= link_to category.name, seo_url(category), class: "nav-main-#{index}" %>
+            <div class="level-one-li-div">
+                <span class="fa fa-angle-down dropdown"></span>
+                <h3 class="title">
+                <%= link_to category.name, seo_url(category), class: "title-link" %>
+                </h3>
+            </div>
+
+            <ul class="level-two-ul"><% level_2_categories(category.name).each_with_index do |level_2_category, index| %>
+            <li class="level-two-li"><div class="level-two-li-div">
+              <span class="fa fa-angle-down dropdown-level-two"></span>
+              <div class="title">
+                <%= image_tag "spree/frontend/#{category.name.split[0]}-#{index}.png" %>
+                <a href="<%= seo_url(category) %>"><%= level_2_category.name %></a>
+              </div>
+            </div>
+                 <ul class="level-three-ul"><% level_3_categories(category, level_2_category.name).each_with_index do |level_3_category, index| %>
+                <li class="level-three-li">
+                  <a href="<%= seo_url(category) %>"><%= level_3_category.name %></a>
+                </li>
+                  <% end %>
+                </ul>
+
+            </li>
+              <% end %>
+            </ul>
+
+	</li>
+      <% end %>
+      <li class="level-one-li stores-li"><%= link_to 'stores', stores_path %></li>
+    </ul>
+  </nav>
+
+  <div class="header-foot">
+      <ul class="header-foot-ul">
+        <h1>Contact Us: 080-33130000</h1>
+      </ul>
+      <ul class="header-foot-ul">
+        <h1><%= link_to 'About Us', spree.aboutus_path %></h1>
+      </ul>
+      <ul class="header-foot-ul">
+        <h1><%= link_to 'Why shop with us', spree.signup_path %></h1>
+      </ul>
+      <ul class="header-foot-ul">
+        <h1><%= link_to 'Start a Store', spree.signup_seller_path %></h1>
+      </ul>
+      <ul class="social">
+        <li><a href="https://www.facebook.com/nattyindia/" target="_blank"><%= fa_icon 'facebook' %></a></li>
+        <li><a href="https://www.instagram.com/nattydotin/" target="_blank"><%= fa_icon 'instagram' %></a></li>
+        <li><a href="https://www.twitter.com/nattydotin/" target="_blank"><%= fa_icon 'twitter' %></a></li>
+        <li><a href="https://in.pinterest.com/natty_pins" target="_blank"><%= fa_icon 'pinterest-p' %></a></li>
+      </ul>
+  </div>
+
+    <div class="bars-menu">
+        <ul class="bars-menu-ul">
+            <li><%= link_to 'ABOUT US', spree.aboutus_path %></li>
+            <li><%= link_to 'WHY SHOP WITH US ?', spree.whyshopwithus_path %></li>
+            <li><%= link_to 'TRACK YOUR ORDER', spree.aboutus_path %></li>
+            <li><%= link_to 'FAQs', spree.faqs_path %></li>
+            <li><%= link_to 'SHIPPING AND RETURNS', spree.shippingreturns_path %></li>
+            <li><%= link_to 'CAREERS', spree.careers_path %></li>
+            <li><%= link_to 'CONTACT US', spree.contact_path %></li>
+            <li><%= link_to 'START A STORE', spree.signup_seller_path %></li>
+        </ul>
+    </div>
+
+</div>
+
+
+  <nav class="nav-subs nav-subs-women">
+    <ul>
+        <% level_2_categories('women').each_with_index do |category, index| %>
+        <li class="nav-sub">
+          <a href="<%= seo_url(category) %>">
+            <%= image_tag "spree/frontend/women-#{index}.png" %>
+            <p><%= category.name %></p>
+          </a>
+
+            <nav class="third-level-menu">
+                <ul class="third-level-menu-ul"><% level_3_categories(Spree::Taxon.find_by_name('women'), category.name).each_with_index do |category_child, index| %>
+                    <li class="third-level-menu-li">
+                      <a href="<%= seo_url(category_child) %>"><%= category_child.name %></a>
+                    </li>
+                <% end %>
+                </ul>
+            </nav>
+
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <nav class="nav-subs nav-subs-men">
+    <ul>
+        <% level_2_categories('men').each_with_index do |category, index| %>
+        <li class="nav-sub">
+          <a href="<%= seo_url(category) %>">
+            <%= image_tag "spree/frontend/men-#{index}.png" %>
+            <p><%= category.name %></p>
+          </a>
+
+            <nav class="third-level-menu">
+                <ul class="third-level-menu-ul"><% level_3_categories(Spree::Taxon.find_by_name('men'), category.name).each_with_index do |category_child, index| %>
+                    <li class="third-level-menu-li">
+                      <a href="<%= seo_url(category_child) %>"><%= category_child.name %></a>
+                    </li>
+                <% end %>
+                </ul>
+            </nav>
+
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <nav class="nav-subs nav-subs-kids">
+    <ul>
+      <% level_2_categories('kids').each_with_index do |category, index| %>
+        <li class="nav-sub">
+          <a href="<%= seo_url(category) %>">
+            <%= image_tag "spree/frontend/kids-#{index}.png" %>
+            <p><%= category.name %></p>
+          </a>
+
+            <nav class="third-level-menu">
+                <ul class="third-level-menu-ul"><% level_3_categories(Spree::Taxon.find_by_name('kids'), category.name).each_with_index do |category_child, index| %>
+                    <li class="third-level-menu-li">
+                      <a href="<%= seo_url(category_child) %>"><%= category_child.name %></a>
+                    </li>
+                <% end %>
+                </ul>
+            </nav>
+
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <nav class="nav-subs nav-subs-home">
+    <ul>
+      <% level_2_categories('home').each_with_index do |category, index| %>
+        <li class="nav-sub">
+          <a href="<%= seo_url(category) %>">
+            <%= image_tag "spree/frontend/home-#{index}.png" %>
+            <p><%= category.name %></p>
+          </a>
+
+            <nav class="third-level-menu">
+                <ul class="third-level-menu-ul"><% level_3_categories(Spree::Taxon.find_by_name('home'), category.name).each_with_index do |category_child, index| %>
+                    <li class="third-level-menu-li">
+                      <a href="<%= seo_url(category_child) %>"><%= category_child.name %></a>
+                    </li>
+                <% end %>
+                </ul>
+            </nav>
+
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <nav class="nav-subs nav-subs-lifestyle">
+    <ul>
+      <% level_2_categories('lifestyle').each_with_index do |category, index| %>
+        <li class="nav-sub">
+          <a href="<%= seo_url(category) %>">
+            <%= image_tag "spree/frontend/lifestyle-#{index}.png" %>
+            <p><%= category.name %></p>
+          </a>
+
+            <nav class="third-level-menu">
+                <ul class="third-level-menu-ul"><% level_3_categories(Spree::Taxon.find_by_name('lifestyle'), category.name).each_with_index do |category_child, index| %>
+                    <li class="third-level-menu-li">
+                      <a href="<%= seo_url(category_child) %>"><%= category_child.name %></a>
+                    </li>
+                <% end %>
+                </ul>
+            </nav>
+
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <nav class="nav-subs nav-subs-food">
+    <ul>
+      <% level_2_categories('food & drink').each_with_index do |category, index| %>
+        <li class="nav-sub">
+          <a href="<%= seo_url(category) %>">
+            <%= image_tag "spree/frontend/food-#{index}.png" %>
+            <p><%= category.name %></p>
+          </a>
+
+            <nav class="third-level-menu">
+                <ul class="third-level-menu-ul"><% level_3_categories(Spree::Taxon.find_by_name('food & drink'), category.name).each_with_index do |category_child, index| %>
+                    <li class="third-level-menu-li">
+                      <a href="<%= seo_url(category_child) %>"><%= category_child.name %></a>
+                    </li>
+                <% end %>
+                </ul>
+            </nav>
+
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+  <nav class="nav-subs nav-subs-gifts">
+    <ul>
+      <% level_2_categories('gifts').each_with_index do |category, index| %>
+        <li class="nav-sub">
+          <a href="<%= seo_url(category) %>">
+            <%= image_tag "spree/frontend/gifts-#{index}.png" %>
+            <p><%= category.name %></p>
+          </a>
+
+            <nav class="third-level-menu">
+                <ul class="third-level-menu-ul"><% level_3_categories(Spree::Taxon.find_by_name('gifts'), category.name).each_with_index do |category_child, index| %>
+                    <li class="third-level-menu-li">
+                      <a href="<%= seo_url(category_child) %>"><%= category_child.name %></a>
+                    </li>
+                <% end %>
+                </ul>
+            </nav>
+
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
+</header>
+<div id='error-form'><ul></ul></div>

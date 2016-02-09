@@ -1,0 +1,66 @@
+<% self.title = 'Natty : Checkout' %>
+<% @body_id = 'checkout' %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<div class="cart-heading">
+  <h1>Checkout</h1>
+  <p>You have <%= pluralize @order.line_items.count, 'item', 'items' %> in your bag.</p>
+</div>
+<div class="checkout-nav">
+  <div class="checkout-nav-breadcrumb">
+    <%= checkout_progress %>
+  </div>
+  <div class="checkout-nav-bag">
+    <%= link_to 'Back to Shopping Bag', '/cart' %>
+  </div>
+</div>
+<div class="checkout-page group">
+  <div class="checkout-content">
+    <% if @order.state != 'confirm' %>
+      <%= form_for @order, :url => update_checkout_path(@order.state), :html => { :id => "checkout_form_#{@order.state}" } do |form| %>
+        <%= render @order.state, :form => form %>
+      <% end %>
+    <% else %>
+      <form action='<%= @submitHash[:submit] %>' method='post'>
+        <%= render 'confirm' %>
+        <input type="hidden" name="key" value="<%= @submitHash[:key] %>" />
+        <input type="hidden" name="txnid" value="<%= @submitHash[:txnid] %>" />
+        <input type="hidden" name="amount" value="<%= @submitHash[:amount] %>" />
+        <input type="hidden" name="productinfo" value="<%= @submitHash[:productinfo] %>" />
+        <input type="hidden" name="firstname" value="<%= @submitHash[:firstname] %>" />
+        <input type="hidden" name="email" value="<%= @submitHash[:email] %>" />
+        <input type="hidden" name="phone" value="<%= @submitHash[:phone] %>" />
+        <input type="hidden" name="surl" value="<%= @submitHash[:surl] %>" />
+        <input type="hidden" name="furl" value="<%= @submitHash[:furl] %>" />
+        <input type="hidden" name="hash" value = "<%= @submitHash[:hash] %>" />
+        <input type="hidden" name="lastname" value="<%= @submitHash[:lastname] %>" />
+        <input type="hidden" name="address1" value="<%= @submitHash[:address1] %>" />
+        <input type="hidden" name="address2" value="<%= @submitHash[:address2] %>" />
+        <input type="hidden" name="city" value="<%= @submitHash[:city] %>" />
+        <input type="hidden" name="state" value="<%= @submitHash[:state] %>" />
+        <input type="hidden" name="country" value="<%= @submitHash[:country] %>" />
+        <input type="hidden" name="zipcode" value="<%= @submitHash[:zipcode] %>" />
+      </form>
+    <% end %>
+  </div>
+  <div class="checkout-summary">
+    <%= render :partial => 'summary', :locals => { :order => @order } %>
+  </div>
+</div>
+<ul class="cart-nav-icons checkout-footer">
+  <li>
+    <%= image_tag 'spree/frontend/cart-secure.png' %>
+    <p>Secure Payments</p>
+  </li>
+  <li>
+    <%= image_tag 'spree/frontend/cart-buyer.png' %>
+    <p>Buyer Protection</p>
+  </li>
+  <li>
+    <%= image_tag 'spree/frontend/cart-return.png' %>
+    <p>Quick and Easy Returns</p>
+  </li>
+</ul>
+<script>
+  Spree.current_order_id = "<%= @order.number %>"
+  Spree.current_order_token = "<%= @order.guest_token %>"
+</script>

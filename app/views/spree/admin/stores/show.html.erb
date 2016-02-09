@@ -1,0 +1,155 @@
+<% content_for :page_title do %>
+  <%= "Details for Store: #{@store.name}" %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li><%= button_link_to 'Back to Stores List', session[:return_to] || admin_stores_url, :icon => 'arrow-left' %></li>
+  <li><%= button_link_to 'View Storefront', store_path(@store), :icon => 'arrow-right' %></li>
+<% end %>
+
+<% content_for :sub_menu do %>
+  <ul id="sub_nav" class="inline-menu">
+    <%= tab :stores %>
+    <%= tab :pending_stores %>
+    <%= tab :approved_stores %>
+    <%= tab :featured_stores %>
+  </ul>
+<% end %>
+
+<div class="alpha sixteen columns">
+  <fieldset>
+    <legend align="center">Company Information</legend>
+    <div class="field">
+      <label>Company Name</label>
+      <div><%= @store.seller.name %></div>
+    </div>
+    <div class="field">
+      <label>Address</label>
+      <div><%= @store.office_address.address.address1 %></div>
+      <div><%= @store.office_address.address.address2 %></div>
+      <div><%= @store.office_address.address.city %></div>
+      <div><%= @store.office_address.address.state.name %></div>
+      <div><%= @store.office_address.address.zipcode %></div>
+    </div>
+    <label>Primary Contact</label>
+    <div class="field">
+      <div>Name: <%= "#{@store.seller.user.first_name} #{@store.seller.user.last_name}" %></div>
+      <div>Email: <%= @store.seller.user.email %></div>
+      <div>Phone: <%= @store.office_address.address.phone %></div>
+    </div>
+    <label>Secondary Contact</label>
+    <div class="field">
+      <div>Name: <%= @store.seller.alternate_name %></div>
+      <div>Email: <%= @store.seller.alternate_email %></div>
+      <div>Phone: <%= @store.seller.alternate_phone %></div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend align="center">Bank Information</legend>
+    <div class="field">
+      <label>Bank Name</label>
+      <div><%= @store.seller.bank_name %></div>
+      <label>Bank Branch</label>
+      <div><%= @store.seller.bank_branch %></div>
+      <label>Bank Address</label>
+      <div><%= @store.seller.bank_address %></div>
+      <label>Account Name</label>
+      <div><%= @store.seller.bank_account_name %></div>
+      <label>Account Number</label>
+      <div><%= @store.seller.bank_account_number %></div>
+      <label>IFSC</label>
+      <div><%= @store.seller.bank_ifsc %></div>
+      <label>MICR</label>
+      <div><%= @store.seller.bank_micr %></div>
+      <label>PAN #</label>
+      <div><%= @store.seller.bank_pan %></div>
+      <label>TIN #</label>
+      <div><%= @store.seller.bank_tin %></div>
+      <label>VAT #</label>
+      <div><%= @store.seller.bank_vat %></div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend align="center">Store Information</legend>
+    <div class="field">
+      <label>Store Name</label>
+      <div><%= @store.name %></div>
+    </div>
+    <div class="field">
+      <label>Store Description</label>
+      <div><%= @store.description %></div>
+    </div>
+    <div class="field">
+      <label>Submitted Store Categories</label>
+      <% @store.sample_taxons.each do |category| %>
+        <div><%= category.pretty_category %></div>
+      <% end %>
+    </div>
+    <div class="field">
+      <label>Store Categories (via Products)</label>
+      <% @store.categories.each do |category| %>
+        <div><%= category.pretty_category %></div>
+      <% end %>
+    </div>
+    <div class="field">
+      <label>Logo</label>
+      <div><%= image_tag @store.logo.attachment.url %></div>
+    </div>
+    <div class="field">
+      <label>Banner</label>
+      <div><%= image_tag @store.image.attachment.url, style: 'max-width:100%;' %></div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend align="center">Sample Products</legend>
+    <table class="index">
+      <colgroup>
+         <col style="width: 25%;">
+         <col style="width: 25%;">
+         <col style="width: 25%;">
+         <col style="width: 25%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @store.product_samples.each do |sample| %>
+          <tr class="<%= cycle('odd', 'even') %>">
+            <td class="align-center"><%= image_tag(sample.image.attachment.url) if sample.image && sample.image.attachment %></td>
+            <td class="align-center"><%= sample.name %></td>
+            <td class="align-center"><%= sample.description %></td>
+            <td class="align-center"><%= sample.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </fieldset>
+  <fieldset>
+    <legend align="center">Social Links</legend>
+    <% social_urls = @store.social_urls.split(",") %>
+    <div class="field">
+      <label>Facebook</label>
+      <div><a href="<%= social_urls[0] %>" target="_blank"><%= social_urls[0] %></a></div>
+    </div>
+    <div class="field">
+      <label>Twitter</label>
+      <div><a href="<%= social_urls[1] %>" target="_blank"><%= social_urls[1] %></a></div>
+    </div>
+    <div class="field">
+      <label>Website</label>
+      <div><a href="<%= social_urls[2] %>" target="_blank"><%= social_urls[2] %></a></div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend align="center">Other</legend>
+    <div class="field">
+      <label>Where did you hear about us?</label>
+      <div><%= simple_format @store.hearaboutus %></div>
+    </div>
+  </fieldset>
+</div>

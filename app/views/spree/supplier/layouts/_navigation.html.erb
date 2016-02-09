@@ -1,0 +1,135 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="dropdown profile-element">
+          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear">
+          </a>
+          <ul class="dropdown-menu animated fadeInRight m-t-xs">
+            <li><%= link_to 'Natty Home', root_path %></li>
+            <li><%= link_to 'Logout', spree.logout_path %></li>
+          </ul>
+        </div>
+        <div class="logo-element">
+          <%= image_tag 'patterns/Dashboard_Small_Logo.png' %>
+        </div>
+      </li>
+      <li class="<%= is_active_controller_action('spree/supplier/stores', 'show') %>">
+        <%= link_to supplier_store_path(@store) do %>
+          <i class="fa fa-pie-chart"></i> <span class="nav-label">Overview</span>
+        <% end %>
+      </li>
+      <% if !@store.approved? %>
+        <li class="<%= is_active_controller_action('spree/supplier/stores', 'edit') %>">
+          <%= link_to edit_supplier_store_path(@store) do %>
+            <i class="fa fa-info-circle"></i> <span class="nav-label">Details for Verification</span>
+          <% end %>
+        </li>
+      <% end %>
+      <% if @store.approved? %>
+        <li>
+          <a href="#">
+            <i class="fa fa-shopping-bag"></i> <span class="nav-label">Orders</span><span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li class="<%= is_active_controller('spree/supplier/products') %>">
+              <%= link_to supplier_store_orders_pending_path(@store) do %>
+                <span class="nav-label">Pending</span>
+              <% end %>
+            </li>
+            <li class="<%= is_active_controller('spree/supplier/option_types') %>">
+              <%= link_to supplier_store_orders_fulfilled_path(@store) do %>
+                <span class="nav-label">Fulfilled</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-tags"></i> <span class="nav-label">Products</span><span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li class="<%= is_active_controller_action('spree/supplier/products', 'index') %>">
+              <%= link_to supplier_store_products_path(@store) do %>
+                <span class="nav-label">Products</span>
+              <% end %>
+            </li>
+            <li class="<%= is_active_controller('spree/supplier/option_types') %>">
+              <%= link_to supplier_store_option_types_path(@store) do %>
+                <span class="nav-label">Manage Variant Types</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+      <li>
+        <a href="#">
+          <i class="fa fa-wrench"></i> <span class="nav-label">Settings</span><span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <% if @store.approved? %>
+            <li class="<%= is_active_controller_action('spree/supplier/settings', 'store') %>">
+              <%= link_to supplier_store_settings_store_path(@store) do %>
+                <span class="nav-label">Store Information</span>
+              <% end %>
+            </li>
+          <% end %>
+          <li class="<%= is_active_controller_action('spree/supplier/settings', 'banking') %>">
+            <%= link_to supplier_store_settings_banking_path(@store) do %>
+              <span class="nav-label">Banking Information</span>
+            <% end %>
+          </li>
+          <% if @store.approved? %>
+            <li class="<%= is_active_controller_action('spree/supplier/policies', 'policies') %>">
+              <%= link_to supplier_store_settings_policies_path(@store) do %>
+                <span class="nav-label">Store Policies</span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+      <% if @store.approved? %>
+        <li class="<%= is_active_controller('spree/supplier/stocks') %>">
+          <%= link_to supplier_store_stock_items_path(@store) do %>
+            <i class="fa fa-clone"></i> <span class="nav-label">Inventory</span>
+          <% end %>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-bar-chart"></i> <span class="nav-label">Financials</span><span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li class="<%= is_active_controller_action('spree/supplier/financials', 'index') %>">
+              <%= link_to '#' do %>
+                <span class="nav-label">Performance</span>
+              <% end %>
+            </li>
+            <li class="<%= is_active_controller_action('spree/supplier/financials', 'reports') %>">
+              <%= link_to '#' do %>
+                <span class="nav-label">Reports</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-bell"></i> <span class="nav-label">Notifications</span><span class="fa arrow"></span>
+          </a>
+          <ul class="nav nav-second-level">
+            <li class="<%= is_active_controller_action('spree/supplier/notifications', 'customer') %>">
+              <%= link_to '#' do %>
+                <span class="nav-label">Customer Messages</span>
+              <% end %>
+            </li>
+            <li class="<%= is_active_controller_action('spree/supplier/notifications', 'admin') %>">
+              <%= link_to '#' do %>
+                <span class="nav-label">Admin Messages</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

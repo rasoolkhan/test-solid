@@ -1,0 +1,24 @@
+<% self.title = "Natty : Login" %>
+<% @body_id = 'page-signup' %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<div class="signup-banner">
+  <%= image_tag 'spree/frontend/signup-banner.png' %>
+</div>
+<div class="signup-content">
+  <%= form_for Spree::User.new, :as => :spree_user, :url => spree.create_new_session_path do |f| %>
+    <h1>Login</h1>
+    <div class="form-fields">
+      <div class="fb-signup-container"><a class="signup-facebook" href="<%= spree_user_omniauth_authorize_path(:facebook) %>">
+        <%= fa_icon 'facebook' %>
+        <span>Login with Facebook</span>
+      </a></div>
+      <div class="login-spacer"></div>
+      <h2>Login with Email</h2>
+      <%= render :partial => 'spree/shared/login_form', :locals => { :f => f } %>
+      <%= link_to Spree.t(:forgot_password), spree.recover_password_path, class: 'link-password-forgot' %>
+      <div class="loginButton"><%= f.submit 'Login' %></div>
+      <p class="link-password-signup">Not a registered user? <%= link_to 'Sign Up now.', spree.signup_path %>
+    </div>
+  <% end %>
+  <%= render :partial => 'spree/shared/user_static' %>
+</div>

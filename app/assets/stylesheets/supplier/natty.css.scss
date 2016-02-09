@@ -1,0 +1,126 @@
+.table-images {
+
+  img {
+    height: 100px;
+    width:auto;
+  }
+}
+
+.checkboxes-form {
+
+  text-align: left;
+
+  .i-checks{
+
+  display: inline-block;
+  padding-right: 15px;
+
+  .rightspace{
+    padding-right: 3px;
+       }
+
+            }
+
+}
+
+.right-button{
+  text-align: right;
+  padding-right: 15px;
+}
+
+.orders-show-information{
+
+
+
+}
+.orders-show-info{
+  text-align: left;
+  margin-bottom: 20px;
+
+
+}
+.order-num{
+  font-weight: bold;
+}
+
+.ship-details{
+
+
+  line-height: 1.3;
+
+
+}
+
+.right-buttonm{
+
+  margin-right: 15px;
+}
+
+.pname{
+  text-align: left;
+  padding-top: 7px;
+}
+
+.input-group {
+  width: 100%;
+
+  .chosen-container {
+    width: 100%;
+  }
+}
+
+body.mini-navbar .navbar-default .nav .nav-second-level li a span {
+  display: block;
+}
+
+.simplecolorpicker span.color {
+  border-color: #e5e6e7;
+}
+
+.simplecolorpicker.fontawesome span.color[title="white"][data-selected]:after {
+  color: black;
+}
+
+.form-group {
+  li {
+    text-align: left;
+  }
+}
+
+.form-policies-add {
+  margin-right: 15px;
+}
+
+.btn-add-product {
+  margin-bottom: 15px;
+}
+
+.form-category-add.btn {
+  margin: 0;
+}
+
+.form-category-line {
+  &:not(:first-child) {
+    .chosen-container {
+      margin-top: 7px;
+    }
+  }
+
+  .col-xs-3 > li {
+    position: absolute;
+    bottom: -10px;
+    left: -150px;
+  }
+}
+
+.simplecolorpicker {
+  span:first-child {
+    display: none;
+  }
+}
+
+.stores-edit-slug-domain {
+  text-align: left;
+  padding-top: 13px;
+  margin-left: -20px;
+}

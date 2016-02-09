@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <td>
+      <p class="lede">
+        <%= "Dear #{@user.first_name}," %>
+      </p>
+      <p>
+        <%= "Congratulations! Your store #{@store.name} has been approved!" %>
+      </p>
+      <p>
+        Please make sure your banking information is complete by visiting your settings <a href='<%= supplier_store_settings_banking_url @store %>'>here</a>. Products will not be shown on your page until your banking information is complete.
+      </p>
+      <p>
+        You may now start adding products to your store by visiting your <a href='<%= supplier_store_url @store %>'>dashboard</a>.
+      </p>
+      <p>
+        Thanks,
+      </p>
+      <p>
+        Natty.in
+      </p>
+    </td>
+    <td class="expander"></td>
+  </tr>
+</table>

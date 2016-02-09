@@ -1,0 +1,43 @@
+em {
+  font-style: italic;
+}
+
+input, select, textarea, .slick-slide {
+  &:focus {
+    outline: 0;
+  }
+}
+
+.group:before, .group:after {
+  content: " ";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  *zoom: 1;
+}
+
+a {
+	text-decoration: none;
+  color: rgb(102, 102, 102);
+}
+
+body {
+  font: {
+    family: "futura-pt";
+    // book - 300
+    // medium - 400
+    // heavy - 500
+    // bold - 700
+    weight: 500;
+    size: 18px;
+  }
+}
+
+#error-form {
+  display: none;
+}

@@ -1,0 +1,446 @@
+.products-show-breadcrumb{
+    padding-left: 31px;
+    font-size: 10px;
+    font-family: "futura-pt";
+    color: rgb(102, 102, 102);
+    text-transform: uppercase;
+    line-height: 5.64;
+
+    a:last-child{
+      font-weight: 700;
+    }
+
+}
+
+.products-show-upper{
+    margin:0 auto;
+    width:1280px;
+
+      .products-show-images
+      {
+        display: inline-block;
+        position: relative;
+        width: 60%;
+
+        .product-show-arrow-right{
+          position: absolute;
+          top: 260px;
+          right: 25px;
+          background: transparent;
+          border:0px;
+          border-radius: 0;
+          color: rgb(255, 255, 255);
+          font-size: 40px;
+        }
+
+        .product-show-arrow-left {
+          position: absolute;
+          top: 260px;
+          left: 25px;
+          z-index: 9;
+          background: transparent;
+          border: 0px;
+          border-radius: 0;
+          color: rgb(255, 255, 255);
+          font-size: 40px;
+          font-weight: regular;
+        }
+
+        .slick-dots {
+          margin: 36px 0 65px 0;
+
+          li {
+            margin-right: 44px;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+
+      .products-show-interaction{
+
+        margin:0 20px;
+        padding:40px 60px;
+        z-index: 9999;
+        display:inline-block;
+        width:35%;
+        vertical-align: top;
+        h1{
+
+            font-size: 34px;
+            font-family: "Georgia";
+            color: rgb(51, 51, 51);
+            font-weight: bold;
+            line-height: 1.171;
+
+        }
+
+        h6{
+
+            font-size: 14px;
+            font-family: "Georgia";
+            color: rgb(102, 102, 102);
+            font-style: italic;
+            line-height: 1;
+
+        }
+        h3{
+
+            font-size: 18px;
+            font-family: "futura-pt";
+            color: rgb(51,51,51);
+            font-weight:400;
+            padding-top: 30px;
+            padding-bottom: 10px;
+        }
+
+        .products-show-social{
+
+            font-size: 18px;
+            font-family: "FontAwesome";
+            color: rgb(233, 98, 98);
+            text-align: center;
+            border-top: 1px solid rgb(192, 192, 192);
+            border-bottom: 1px solid rgb(192, 192, 192);
+            margin:10px 0;
+            padding:15px;
+
+            i{
+              margin-right: 25px;
+              }
+
+          }
+
+
+        .products-show-interaction-pricestocksku{
+            border-top: 1px solid rgb(192, 192, 192);
+            border-bottom: 1px solid rgb(192, 192, 192);
+            padding: 10px 0;
+
+            .products-show-interaction-price{
+              display: inline-block;
+              vertical-align: middle;
+              font-family: "futura-pt";
+              color: rgb(51,51,51);
+              font-size: 28px;
+              font-weight:400;
+              width:40%;
+              margin-right: 28px;
+            }
+            .products-show-interaction-stocksku{
+              display: inline-block;
+              vertical-align: middle;
+              font-size: 12px;
+              font-family: "futura-pt";
+              color: rgb(102, 102, 102);
+              line-height: 1.367;
+              text-align: right;
+              width:50%;
+              .stock-active {
+                color: rgb(137, 182, 163);
+              }
+              .stock-inactive{
+                color: rgb(233,98,98);
+              }
+
+            }
+}
+
+            .products-show-interaction-options{
+
+              ul{
+
+                padding: 20px 0;
+                li:nth-child(even){
+                  margin-left: 11px;
+
+                }
+
+                li{
+                  display:inline-block;
+
+                  label{
+                    display: block;
+                    font-size: 13px;
+                    font-family: "Georgia";
+                    color: rgb(102, 102, 102);
+                    font-style: italic;
+                    text-align: left;
+                    padding-bottom: 5px
+                    }
+
+                  select{
+
+                    -webkit-appearance:none;
+                    -moz-appearance:none;
+                    background: transparent;
+                    appearance:none;
+                    font-size: 12px;
+                    font-family: "futura-pt";
+                    color: rgb(38, 38, 38);
+                    font-weight: 400;
+                    border-radius: 0px;
+                    border: 1px solid rgb(170, 170, 170);
+                    padding: 5px;
+                    width:150px;
+                    margin-bottom: 20px;
+
+                  }
+                  input{
+                    padding:5px;
+                    width:150px;
+                    border:1px solid rgb(170, 170, 170);
+                    font-size: 12px;
+                    font-family: "futura-pt";
+                    margin-bottom: 20px;
+                  }
+                }
+                }
+              }
+            }
+
+            .products-show-cart{
+              padding: 20px 0px;
+
+              button{
+
+                width: 47%;
+                border: 1px solid rgb(233,98,98);
+                background-color: rgb(233, 98, 98);
+                font-size: 17px;
+                font-weight: 400;
+                font-family: "futura-pt";
+                color: rgb(255, 255, 255);
+                text-transform: uppercase;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
+              }
+
+              a{
+                //width: 47%;
+                border: 1px solid rgb(233,98,98);
+                //background-color: rgb(233, 98, 98);
+                font-size: 14px;
+                font-family: "futura-pt";
+                font-weight: 400;
+                color: rgb(233, 98, 98);
+                text-transform: uppercase;
+                text-align: center;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                vertical-align: middle;
+                padding-left: 54px;
+                padding-right: 54px;
+                margin-left: 4px;
+              }
+            }
+
+        }
+.products-show-mid{
+
+  background-color: rgb(238, 238, 238);
+  text-align: center;
+
+  .products-show-mid-container
+  {
+    width:1280px;
+    padding: 40px 0;
+    margin: auto;
+
+    h4{
+        font-family: "futura-pt";
+        color: rgb(38, 38, 38);
+        font-size: 14px;
+        padding-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+
+    .products-show-description{
+      padding: 30px 0;
+      padding-right: 100px;
+      font-size: 14px;
+      display: inline-block;
+      width:50%;
+      vertical-align: top;
+      text-align: left;
+
+
+
+      p{
+
+          font-family: "Georgia";
+          color: rgb(51, 51, 51);
+          line-height: 1.571;
+
+       }
+  }
+
+    .products-show-lists{
+
+      padding: 30px;
+      //font-size: 14px;
+      display: inline-block;
+      width:50%;
+      margin-left: -5px;
+      background-color: white;
+      text-align: left;
+
+      h5{
+
+          font-size: 16px;
+          font-family: "futura-pt";
+          color: rgb(102, 102, 102);
+          line-height: 1.5;
+          padding: 20px 0;
+
+      }
+
+      .products-show-specifications{
+
+          font-size: 13px;
+          font-family: "Georgia";
+          color: rgb(38, 38, 38);
+          font-style: italic;
+          line-height: 1.2;
+          //text-align: center;
+
+
+
+        li{
+        display: inline-block;
+        text-align: center;
+        margin-right: 30px;
+          }
+
+        li:last-child{
+          margin-right: 0;
+        }
+
+
+      }
+
+    .products-show-properties{
+
+        li{
+
+          font-size: 14px;
+          font-family: "Georgia";
+          color: rgb(102, 102, 102);
+          line-height: 1.571;
+
+          }
+
+    }
+
+    .products-show-features{
+
+
+
+          list-style-type: disc;
+          list-style-position:inside;
+
+          li{
+            font-size: 14px;
+            font-family: "Georgia";
+            color: rgb(102, 102, 102);
+            line-height: 1.571;
+            }
+
+
+
+
+    }
+
+
+
+
+    }
+}
+}
+
+.products-show-lower{
+  width:1280px;
+  padding: 40px 0;
+  margin: auto;
+
+  .products-show-review{
+    padding: 30px 0;
+    padding-right: 100px;
+    font-size: 14px;
+    display: inline-block;
+    width:50%;
+    vertical-align: top;
+    text-align: left;
+  }
+  .products-show-question{
+
+    padding: 30px;
+    //font-size: 14px;
+    display: inline-block;
+    width:50%;
+    margin-left: -5px;
+    background-color: rgb(238, 238, 238);
+    text-align: left;
+    h5{
+
+        font-size: 16px;
+        font-family: "Georgia";
+        color: rgb(233, 98, 98);
+        font-weight: bold;
+        font-style: italic;
+        line-height: 1.5;
+
+    }
+
+    h4{
+
+        font-size: 14px;
+        font-family: "Futura Std";
+        color: rgb(97, 97, 97);
+        line-height: 1.571;
+
+    }
+
+    textarea{
+      width:100%;
+      height: 100px;
+      border-width: 1px;
+      border-color: rgb(170, 170, 170);
+      border-style: solid;
+      background-color: rgb(255, 255, 255);
+      font-size: 13px;
+      font-family: "Georgia";
+      color: rgb(102, 102, 102);
+      font-style: italic;
+      line-height: 1.2;
+      margin: 20px 0;
+      padding:5px 7px;
+
+
+    }
+
+    input{
+      //width: 47%;
+      border: 1px solid;
+      background: transparent;
+      font-size: 14px;
+      font-family: "futura-pt";
+      font-weight: 400;
+      color: rgb(233, 98, 98);
+      text-transform: uppercase;
+      text-align: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      vertical-align: middle;
+      padding-left: 54px;
+      padding-right: 54px;
+
+    }
+
+  }
+}

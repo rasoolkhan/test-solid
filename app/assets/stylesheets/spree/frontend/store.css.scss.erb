@@ -1,0 +1,851 @@
+#stores-show{
+  .stores-show-header {
+    background-color: white;
+
+    h1 {
+         font-family: "futura-pt";
+         font-size: 30 / 16 * 1em;
+         color: rgb(102, 102, 102);
+         text-transform: uppercase;
+         margin-top: 20px;
+         //line-height: 1.667;
+         font-weight: 400;
+         text-align: center;
+
+    }
+    h6 {
+      font-size: 14px;
+      font-family: "Georgia";
+      color: rgb(102, 102, 102);
+      font-style: italic;
+      //line-height: 1.205;
+      text-align: center;
+      margin-bottom: 20px;
+
+    }
+  }
+  .stores-show-banner{
+    background-color: rgb(238, 238, 238);
+    padding: 25px 0 95px 0;
+    margin-top: 15px;
+
+      .stores-show-banner-content{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1000px;
+        position: relative;
+          text-align: center;
+          overflow: hidden; 
+
+          .stores-show-banner-image{
+              position: relative ;
+                left: 100% ;
+                margin-left: -200% ;
+                height: 215px ;
+                width: 1000px ;
+          }
+
+      .stores-show-description{
+          display: table;
+          text-align: left;
+          .stores-show-description-left{
+             display: table-cell;
+             width: 20%;
+             background-color: #fff;
+          }
+
+        .stores-show-description-right{
+            background-color: white;
+            /*float: right;
+            max-width: 775px;
+            position: relative;*/
+            padding-left: 20px;
+            border-left: 30px solid #EEEEEE;
+            box-sizing: border-box;
+
+
+          .stores-show-description-right-about{
+            /* max-width: 550px; */
+            width: 75%;
+            display: inline-block;
+            border-right: 2px solid #eeeeee;
+              h5{
+                font-size: 14px;
+                font-family: "futura-pt";
+                color: rgb(253, 141, 113);
+                font-weight: 700;
+                text-transform: uppercase;
+                //line-height: 4;
+
+                //left: 503.166px;
+                padding-top: 20px;
+                //width: 685px;
+                //height: 120px;
+              }
+              p{
+                  // display: inline-block;
+
+                  font-size: 14px;
+                  font-family: "Georgia";
+                  color: rgb(102, 102, 102);
+                  line-height: 1.571;
+                  text-align: left;
+
+                  //left: 503.166px;
+                  padding-top: 20px;
+                  width: 95%;
+                  //height: 82px;
+              }
+              a{
+                display: inline-block;
+
+                font-size: 14px;
+                font-family: "Georgia";
+                color: rgb(253, 141, 113);
+                line-height: 1.571;
+                text-align: left;
+                font-weight: bold;
+                font-style: italic;
+                //left: 503.166px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                //width: 685px;
+                //height: 82px;
+              }
+
+
+          }
+          .stores-show-description-right-share{
+            display: inline-block;
+            /* max-width: 200px; */
+            width: 24%;
+            vertical-align: top;
+            box-sizing: border-box;
+            padding: 0 2%;
+            a{
+                font-size: 14px;
+                font-family: "Georgia";
+                color: rgb(102, 102, 102);
+                font-style: italic;
+                display: block;
+                padding-top:20px;
+
+                i{
+                  padding: 0 5px;
+                }
+            }
+            a:first-child{
+              padding-bottom: 25px;
+              border-bottom: 1px solid rgb(238, 238, 238);
+              margin-right: 0px;
+                div{
+                    margin-top: 25px;
+                    text-align: center;
+                }
+            }
+
+          }
+        }
+      }
+        .stores-show-logo-image{
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 160px;
+          max-height: 160px;
+        }
+        .stores-show-banner-logo{
+          height:160px;
+          width:160px;
+          background-color: white;
+          position: absolute;
+          top: 25%;
+          left: 18px;
+          transform: translate(0, -50%);
+
+        }
+      }
+  }
+
+}
+
+      .stores-show-products-header, .stores-index-header{
+          .stores-show-products-heading, .stores-index-heading{
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+
+          h2{
+            font-size: 37px;
+            font-family: "Georgia";
+            color: rgb(51, 51, 51);
+            font-weight: bold;
+            //line-height: 1.351;
+            padding-top: 35px;
+            padding-bottom: 15px;
+              
+              span{
+                    font: initial;
+                    float: right;
+                    display: block;
+                    padding-top: 15px;
+                    margin-right: 15px;
+                    color: #E96262;
+                    cursor: pointer;
+              }
+
+          }
+        }
+      }
+      
+      .stores-show-products-listsection{
+        background-color: rgb(238, 238, 238);
+        text-align: center;
+          
+          .stores-show-products-listsection-container{
+              max-width: 1000px;
+              width: 100%;
+              margin: 0 auto;
+          }
+          .stores-show-products-filter{
+                border: 1px solid red;
+                width: 30%;
+                padding: 50px 10px;
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 45px;
+                display: none;
+          }
+
+        ul{
+          margin: 0px;
+          width: 100%;
+          display: inline-block;
+          li:nth-child(3n+2){
+            margin: 45px 13px 0 13px;
+          }
+          li{
+            display:inline-block;
+            position: relative;
+            //margin-left: -10px;
+            width: 320px;
+            margin: 45px -3px 0 -2px;
+
+
+            img{  width: 100%;
+                  /*height: 300px;*/
+
+              }
+
+          .partial-product{
+            background: rgb(255, 255, 255);
+            width: 100%;
+            position: absolute;
+            bottom:1%;
+            //left:10%;
+            opacity: 0.85;
+            padding: 0 10px;
+
+
+              .partial-product-details{
+
+
+                .partial-product-name{
+                    //display: inline-block;
+                    font-size: 18px;
+                    font-family: "futura-pt";
+                    color: rgb(51, 51, 51);
+                    line-height: 1.5;
+                    text-align: left;
+                    position: relative;
+                    top:10px;
+                    width: 70%;
+                }
+                .partial-product-store{
+                    //display: inline-block;
+                    font-size: 14px;
+                    font-family: "Georgia";
+                    color: rgb(102, 102, 102);
+                    font-style: italic;
+                    text-align: left;
+                    position:relative;
+                    top:10px;
+                }
+                .partial-product-price{
+                    //display:inline-block;
+
+                    font-size: 20px;
+                    font-family: "futura-pt";
+                    color: rgb(38, 37, 38);
+                    font-weight: 500;
+                    line-height: 1.629;
+                    text-align: right;
+                    position: relative;
+                    top:-33px;
+
+                }
+              }
+
+              .partial-product-cart{
+                display: none;
+
+                button{
+                  //position:relative;
+                  //bottom:12px;
+                  //left:155px;
+                  display:inline-block;
+                  text-align: right;
+                  border-style: solid;
+                  border-radius: 0px;
+                  border-color: rgb(253, 141, 113);
+                  background: transparent;
+                  font-family: "futura-pt";
+                  font-size: 14px;
+                  font-weight: 400;
+                  text-transform: uppercase;
+                  color:rgb(253, 141, 113);
+                  padding: 5px 30px;
+                  margin:10px 10px 20px 0;
+                  float:right;
+
+
+                  }
+                }
+              }
+              }
+              li:hover {
+                .partial-product .partial-product-cart {
+                  display: block;
+                }
+              }
+
+
+            }
+        }
+
+        .paginator{
+          background-color: rgb(238, 238, 238);
+          text-align: center;
+          padding:85px 0;
+
+          a{
+          border:1px;
+          border-radius: 0px;
+          width: 190px;
+          background-color: white;
+          padding: 30px;
+          margin: 50px;
+          font-size: 16px;
+          font-family: "futura-pt";
+          color: rgb(77, 77, 77);
+          text-transform: uppercase;
+
+          }
+        }
+
+        .filter-on{
+            li:nth-child(3n+2){
+                margin: 0px !important;
+            }
+            li{
+                margin: 45px 0 0 0 !important;
+                
+                &:nth-child(odd){
+                    margin-right: 5px !important;
+                }
+                &:nth-child(even){
+                    margin-left: 5px !important;
+                }
+                &:last-child:nth-child(odd){
+                    float: left !important;
+                    margin-left: 18px !important;
+                }
+            }
+        }
+
+/* -----------------------------Stores index page css -------------------------------*/
+#stores-index{
+    p {
+        color: rgb(153, 153, 153);
+        line-height: 1.5;
+        
+        font: {
+            family: Georgia;
+            size: 14 / 18 * 1em;
+            weight: normal;
+        }
+    }
+    .stores-index-header {
+        background-color: white;
+
+        h1 {
+             font-family: "futura pt";
+             font-size: 30 / 18 * 1em;
+             color: rgb(102, 102, 102);
+             text-transform: uppercase;
+             font-weight: 400;
+             text-align: center;
+             padding: 20px 0;
+        }
+      }
+    .featured-store{
+        background-color: #F5F5F5;
+        padding: 35px 0;
+        .featured-store-carousel{
+            width: 90%;
+            margin: 0 auto;
+            max-width: 1000px;
+            
+            /*.slick-current{ padding: 0 0px; box-sizing: border-box; }*/  
+            .carousel-arrow-right{ right: -40px; }
+            .carousel-arrow-left{ left: -40px; }
+        }
+        .store-count{
+            max-width: 1000px;
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            overflow: hidden;
+            
+            .featured-banner-image{
+                position: relative;
+                width: 1000px;
+            }
+            .featured-logo-image{
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                width: 150px;
+                height: 150px;
+                background-color: #fff;
+                
+                img{
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .featured-store-rating{
+                width: 75px;
+                height: 75px;
+                position: absolute;
+                right: 65px;
+                top: 50px;
+                background-color: #fff;
+            }
+            .featured-store-about{
+                max-width: 1000px;
+                background-color: #fff;
+                display: table;
+                
+                div{
+                    display: table-cell;
+                    box-sizing: border-box;
+                    padding: 15px 25px;
+                }
+                .featured-store-name{
+                    width: 20%;
+                    position: relative;
+                    text-align: center;
+                    span{
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        position: absolute;
+                        font-family: "Georgia";
+                        font-size: 30 / 22 * 1em;
+                        color: rgb(102, 102, 102);
+                        text-transform: uppercase;
+                        font-weight: 400;
+                    }
+                }
+                .featured-store-description{
+                    width: 60%;
+                    border-left: 2px solid #E2E2E2;
+                    border-right: 2px solid #E2E2E2;
+                }
+                .featured-store-link{
+                    width: 20%;
+                    text-align: center;
+                    position: relative;
+
+                      a {
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        position: absolute;
+                        color: rgb(233, 98, 98);
+                        text-transform: uppercase;
+                        font-size: 14 / 16 * 1em;;
+                        border: 1px solid rgb(233, 98, 98);
+                        padding: 10px 5px;
+                        width: 70%;
+                      }
+                }
+            }
+        }
+    } /*---- Featured store-----*/
+    
+    .stores-filter{
+        /*display: none;*/
+    }
+    
+    
+    
+    .stores-index-stores-listsection{
+        background-color: rgb(238, 238, 238);
+        text-align: center;
+
+        .stores-index-stores-listsection-container{
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .stores-index-stores-filter{
+            width: 30%;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 45px;
+            display: none;
+            background-color: #fff;
+            
+            .filter-close{
+                display: none;
+                background: #4D4D4D;
+                color: #EFEFEF;
+                text-align: center;
+                span{
+                    position: absolute;
+                    left: 20px;
+                }
+            }
+        }
+
+        ul{
+            margin: 0px;
+            width: 100%;
+            display: inline-block;
+            
+            a:nth-child(3n+2){
+                margin: 0 15px;
+            }
+            
+            a{
+                display:inline-block;
+                margin-top: 45px;
+                position: relative;
+                //margin-left: -10px;
+                width: 320px;
+                
+                li{
+
+                    img{ 
+                        width: 50%;
+                        box-sizing: border-box;
+                        margin: 0 -2px;
+                    }
+                   img:nth-of-type(3){
+                        width: 100%;
+                       margin: -3px 0;
+                    }
+                    .store-description-panel{
+                        position: absolute;
+                        bottom: 0;
+                        background: #fff;
+                        width: 100%;
+                        padding: 7px 10px;
+                        
+                        div{  
+                            text-align: left;
+                            span{
+                                color: rgb(153, 153, 153);
+                                line-height: 1.5;
+                                text-transform: capitalize;
+                                font: {
+                                    family: Georgia;
+                                    size: 14 / 18 * 1em;
+                                    weight: normal;
+                                }
+                            }
+                            &:last-child{}
+                        }
+                    }
+                }
+
+            }
+            a:hover {
+                .partial-product .partial-product-cart {
+                    display: block;
+                }
+            }
+        }
+    }
+    
+}
+
+
+@media only screen and (min-width:320px) and (max-width: 999px) {
+    /*-------------stores-show mobile css -----------------*/
+    
+    #stores-show{
+      .stores-show-banner{
+        padding: 0px 0 20px 0;
+        margin-top: 0px;
+          .stores-show-banner-content{
+                .stores-show-banner-image{}
+
+                .stores-show-description{ 
+                    display: block;
+                    
+                    .stores-show-description-left{
+                        display: block;
+                        width: 100%;
+                        border: 1px solid;
+                        padding-top: 100px;
+                        padding-bottom: 30px;
+                    }
+                    .stores-show-description-right{
+                        padding: 0;
+                        border: none;
+                            .stores-show-description-right-about{
+                                width: 100%;
+                                display: block; 
+                                border: none;
+                                padding: 0 20px;
+                                
+                                p{ width: 100%; }
+                            }
+                            .stores-show-description-right-share{
+                                width: 100%;
+                                display: block; 
+                                border: none;
+                                padding: 0 20px;
+                                background-color: #EFEFEF;
+                                text-align: center;
+                                    
+                                    a{
+                                        max-width: 100%;
+                                        width: 100%;
+                                        
+                                        &:first-child {
+                                            padding-bottom: 0px;
+                                            div{
+                                                text-align: center;
+                                                display: inline-block;
+                                                margin: 0;
+                                                margin-left: 20px;
+                                            }
+                                        }
+                                    }
+                            }
+                    }
+                }
+                .stores-show-logo-image{}
+                .stores-show-banner-logo{
+                    top: 220px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    box-shadow: 0px 1px 15px 2px rgba(0, 0, 0, 0.4);
+                }
+          }
+      }/*---------End of stores-show-banner---------*/
+    
+    .stores-show-products-header{
+        .stores-show-products-heading{
+          h2{
+            padding-left: 20px;  
+            font-size: 30px;
+              span{ margin-right: 25px; color: inherit;}
+          }
+        }    
+    }/*--------------End of .stores-show-products-header-------*/
+        
+    .stores-show-products-listsection{
+        .stores-show-products-listsection-container{ }
+        .stores-show-products-filter{ }
+        
+        ul{
+            width: 100%;
+            /*padding: 0 10px;*/
+            
+            li{
+                margin: 0;
+                width: calc(50% - 20px);
+                box-sizing: border-box;
+                margin: 10px -3px;
+                vertical-align: top;
+                
+                .partial-product{
+                    position: inherit;
+                    bottom: 0;
+                    margin-top: -2px;
+                    .partial-product-details{
+                        display: inline-block;
+                        width: 100%;
+                       
+                        p{
+                            position: inherit;
+                            display: block;
+                            width: 100%;
+                            text-align: left;
+                        }
+                        .partial-product-name{
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+                        .partial-product-store{ display: none; }
+                        .partial-product-price{ margin-top: 5px; }
+                    }
+
+                    .partial-product-cart{ 
+                        display: inline-block;
+                        width: 100%;
+                        margin: 5px 0;
+                        
+                        button{
+                            float: left;
+                            margin: 0;
+                            text-align: center;
+                            width: 70%;
+                            padding: 5px 5px;
+                            font-size: 12px;
+                        }
+                    }
+                }
+                &:nth-child(odd){
+                    margin-right: 5px;
+                }
+                &:nth-child(even){
+                    margin-left: 5px;
+                }
+                &:last-child:nth-child(odd){
+                    float: left;
+                    margin-left: 12px;
+                }
+            }
+
+              li:hover {
+                    .partial-product .partial-product-cart { }
+              }
+        }
+    }/*--------------End of .stores-show-products-listsection---------*/
+        
+    .paginator{
+        padding: 40px 0 50px 0;
+        a{
+            border-bottom: 1px solid #D4D4D4;
+            border-right: 1px solid #D4D4D4;   
+        }
+    }
+        
+    
+          
+    }/*----------end of #Stores-show----*/
+    
+    
+    
+/*------------------------------------------------------------Stores-index mobile css -------------------------------------------*/
+    
+    #stores-index{    
+        .featured-store{
+            padding: 0 0 15px 0;
+            .featured-store-carousel{
+                .carousel-arrow{ top: 240px; }
+                .carousel-arrow-right{ right: 0; }
+                .carousel-arrow-left{ left: 0; }
+            }
+            .store-count{            
+                .featured-banner-image{}
+                .featured-logo-image{
+                    top: 110px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    box-shadow: 1px 1px 10px -2px #8E8E8E;
+                }
+                .featured-store-rating{}
+                .featured-store-about{
+                    display: block;
+                    padding: 5px 20px 15px 20px;
+                    margin-top: 55px;
+                    
+                    div{ 
+                        display: block;
+                        padding: 25px 0;
+                    }
+                    .featured-store-name{ width: 100%; }
+                    .featured-store-description{ 
+                        width: 100%; 
+                        border: none;
+                    }
+                    .featured-store-link{ 
+                        width: 100%; 
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+    
+        .stores-index-stores-listsection{
+            background-color: rgb(238, 238, 238);
+            text-align: center;
+
+            .stores-index-stores-listsection-container{
+                max-width: 1000px;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .stores-index-stores-filter{
+                width: 100%;
+                padding: 10px 20px;
+                display: none;
+                position: fixed;
+                bottom: 0;
+                top: 44px;
+                margin-top: 0;
+                z-index: 102;
+                overflow-y: scroll;
+                
+                .filter-close{
+                    display: block;
+                    top: -10px;
+                    left: -20px;
+                    position: relative;
+                    width: calc(100% + 40px);
+                    padding: 12px 20px;
+                    margin-bottom: 10px;
+                }
+            }
+
+            ul{  
+                box-sizing: border-box;
+                padding: 0 4px;
+                
+                a{
+                    width: calc(50% - 4px);
+                    margin-top: 15px;
+                    li{
+                        .store-description-panel{ position: inherit; }
+                    }
+                    
+                    &:nth-child(3n+2) { margin: 0;}
+                    &:last-child:nth-child(odd){
+                        float: left !important;
+                        margin-left: 4px !important;
+                    }
+                }
+            }
+        }
+    
+    }
+ 
+    
+    
+}
+
+
+

@@ -1,0 +1,93 @@
+<% self.title = "Natty : #{@store.name} : Prototypes" %>
+<% content_for :dashboard do %>
+  <%= render 'spree/shared/error_messages', target: @product %>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center m-t-lg">
+          <h1><%= @store.name %></h1>
+          <h2>Prototypes</h2>
+          <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <h5>Edit Prototype</h5>
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <div class="row">
+                    <%= form_for [:supplier, @store, @prototype], html: {multipart: true, role: 'form'} do |f| %>
+                      <div class="form-group">
+                        <%= f.label :name, Spree.t(:name) %> *<br />
+                        <%= f.text_field :name, required: true, class: 'form-control' %>
+                        <%= f.error_message_on :name %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :property_ids, Spree.t(:properties) %><br>
+                        <div class="input-group">
+                          <%= f.select :property_ids, Spree::Property.where(store: @store).map { |p| ["#{p.presentation} (#{p.name})", p.id] }, {}, { multiple: true, class: "chosen-select", style: 'width: 440px;', 'data-placeholder': "Choose Properties" } %>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :option_type_ids, Spree.t(:option_types) %><br>
+                        <div class="input-group">
+                          <%= f.select :option_type_ids, Spree::OptionType.where(store: @store).map { |ot| ["#{ot.presentation} (#{ot.name})", ot.id] }, {}, { multiple: true, class: "chosen-select", style: 'width: 440px;', 'data-placeholder': "Choose Variant Types" } %>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :taxon_ids, 'Categories' %><br>
+                        <div class="input-group">
+                          <%= f.select :taxon_ids, all_categories.map { |t| [t.pretty_name.split('categories ->')[1], t.id] }, {}, { multiple: true, class: "chosen-select", style: 'width: 440px;', 'data-placeholder': "Choose Categories" } %>
+                        </div>
+                      </div>
+                      <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Update</strong></button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="ibox float-e-margins">
+              <div class="ibox-title">
+                <h5>All Prototypes</h5>
+                <div class="ibox-tools">
+                  <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="ibox-content">
+                <table class="table table-striped table-bordered table-hover table-dynamic">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @prototypes.each do |prototype| %>
+                      <tr>
+                        <td><%= prototype.name %></td>
+                        <td><%= link_to fa_icon('edit'), edit_supplier_store_prototype_path(@store, prototype) %></td>
+                        <td><%= link_to fa_icon('trash'), supplier_store_prototype_path(@store, prototype), method: :delete, data: { confirm: "Are you sure you want to delete this prototype?" } %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: "spree/supplier/layouts/dashboard" %>

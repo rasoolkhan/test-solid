@@ -1,0 +1,168 @@
+<% self.title = "Natty : #{@store.name} : Variants" %>
+<% content_for :dashboard do %>
+  <%= render 'spree/shared/error_messages', target: @product %>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center m-t-lg">
+          <h2><%= @product.variants.count == 0 ? 'Master' : 'New' %> Variant for <%= @product.name %></h2>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <!-- <div class="row"> -->
+                    <%= form_for [:supplier, @store, @product, @variant], html: {multipart: true, role: 'form', class: 'form-horizontal variant_form'} do |f| %>
+                      <div class="form-group">
+                        <%= f.label :sku, Spree.t(:sku), class: 'col-sm-2 control-label' %>
+                        <div class="col-sm-10">
+                        <%= f.text_field :sku, required: true, class: 'form-control' %>
+                      </div>
+                        <%= f.error_message_on :sku %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :price, Spree.t(:price), class: 'col-sm-2 control-label' %>
+                        <div class="col-sm-10">
+                        <%= f.number_field :price, value: @product.price, required: true, class: 'form-control' %>
+                      </div>
+                        <%= f.error_message_on :price %>
+                      </div>
+                      <div class="form-group">
+                        <%= label_tag 'variant[stock]', 'Inventory', class: 'col-sm-2 control-label' %>
+                        <div class="col-sm-10">
+                          <%= number_field_tag 'variant[stock]', 0, class: 'form-control' %>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :processing_days, 'Processing Time in Days', class: 'col-sm-2 control-label' %>
+                        <div class="col-sm-10">
+                        <%= f.number_field :processing_days, value: @variant.processing_days, required: true, class: 'form-control' %>
+                      </div>
+                        <%= f.error_message_on :price %>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-2 control-label">
+                          <%= f.label :colour, 'Filter Colour (optional)' %>
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="input-group text-left">
+                            <%= f.select :colour, options_for_select([
+                              [''],
+                              ['white', value='#ffffff'],
+                              ['black', value='#000000'],
+                              ['grey', value='#c0c0c0'],
+                              ['brown', value='#583b1c'],
+                              ['tan', value='#ba9b6f'],
+                              ['red', value='#df0000'],
+                              ['orange', value='#df6400'],
+                              ['yellow', value='#f6ff00'],
+                              ['green', value='#34df00'],
+                              ['turqoise', value='#00dfd2'],
+                              ['blue', value='#0015df'],
+                              ['purple', value='#7300df'],
+                              ['pink', value='#df0083'],
+                              ['burgundy', value='#8f003d'],
+                            ]) %>
+                          </div>
+                        </div>
+                      </div>
+                      <% @product.option_types.each do |option_type| %>
+                        <div class="form-group">
+                          <div class="col-sm-2 control-label">
+                            <%= f.label option_type.name %>
+                          </div>
+                          <div class="col-sm-10">
+                            <div class="input-group">
+                              <%= select_tag "variant[option_type][#{option_type.id}]", options_for_select(["", ""] + Spree::OptionValue.where(option_type: option_type).map { |ov| [ov.name, ov.id] }), class: "chosen-select-deselect ", style: 'width: 440px;', 'data-placeholder': "Choose Option Value" %></td>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+                      <div class="form-group">
+                        <div class="col-sm-2 control-label">
+                          <%= f.label :images, 'Variant Images' %>
+                        </div>
+                        <div class="col-sm-10">
+                          <table class="table table-striped table-bordered table-hover table-images">
+                            <col width="10%">
+                            <col width="90%">
+                            <thead>
+                              <tr>
+                                <th></th>
+                                <th>
+                                  Add Image
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% 4.times do |n| %>
+                                <tr>
+                                  <td>
+                                    <%= n + 1 %>
+                                  </td>
+                                  <td>
+                                    <%= file_field_tag "variant[images][#{n}]", class: 'variant-image' %>
+                                  </td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-sm btn-primary pull-right right-buttonm m-t-n-xs" type="submit"><strong>Create</strong></button>
+                      </div>
+                    <% end %>
+                  <!-- </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% if @product.option_types.count > 0 %>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <h5>All Variants</h5>
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <table class="table table-striped table-bordered table-hover table-dynamic">
+                    <thead>
+                      <tr>
+                        <th>SKU</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @variants.each do |variant| %>
+                        <tr>
+                          <td><%= variant.sku.split('-', 2)[1] %></td>
+                          <td><%= link_to fa_icon('edit'), edit_supplier_store_product_variant_path(@store, @product, variant) %></td>
+                          <td><%= link_to fa_icon('trash'), supplier_store_product_variant_path(@store, @product, variant), method: :delete, data: { confirm: "Are you sure you want to delete this variant?" } %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: "spree/supplier/layouts/dashboard" %>

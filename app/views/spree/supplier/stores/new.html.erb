@@ -1,0 +1,19 @@
+<% self.title = "Natty : Create a Store" %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<% @body_id = 'page-signup' %>
+<%= render 'spree/shared/error_messages', target: @store %>
+<div class="signup-banner">
+  <%= image_tag 'spree/frontend/seller-signup-banner.png' %>
+</div>
+<div class="signup-content">
+  <%= form_for [:supplier, @store], validate: true do |f| %>
+    <h1>Start a Store</h1>
+    <h4>Thank you for your interest in selling on Natty. Please fill in the following details to submit for verification.</h4>
+    <div class="form-fields">
+      <%= render :partial => 'spree/supplier/shared/store_new_form', :locals => { :f => f } %>
+      <%= f.submit 'Submit' %>
+    </div>
+    <div class="form-spacer form-spacer-short"></div>
+    <h4 class="form-description-last">Please allow us 5-7 Working days to get back to you regarding your application status. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel leo laoreet, tristique sapien non, porttitor neque. Nullam vitae lectus in neque consectetur scelerisque quis sed eros.</h4>
+  <% end %>
+</div>

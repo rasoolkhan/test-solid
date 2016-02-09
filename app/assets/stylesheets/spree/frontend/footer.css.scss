@@ -1,0 +1,223 @@
+footer {
+  background: white;
+
+  .footer-container {
+    padding: 60px 0 84px 0;
+    width: 90%; /*1280px;*/
+    margin: 0 auto;
+
+    p {
+      color: #666;
+    }
+  }
+
+  figure {
+    padding-bottom: 23px;
+    border-bottom: 1px solid #666;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    font: {
+      size: 15 / 16 * 1em;
+      weight: 400;
+    }
+  }
+
+  .footer-layout-left {
+    display: inline-block;
+    margin-right: 64px;
+  }
+
+  .footer-social {
+    margin-top: 24px;
+    margin-left: 3px;
+
+    li {
+      display: inline-block;
+      margin-right: 21px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .footer-links-lists, .footer-subscribe {
+    p, a {
+      line-height: 2em;
+
+      font: {
+        family: Georgia;
+        size: 13 / 18 * 1em;
+        weight: normal;
+      }
+    }
+  }
+
+  .footer-links-lists {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 48px;
+    border-right: 1px solid #666;
+    margin-right: 41px;
+
+    .footer-links {
+      display: inline-block;
+      vertical-align: top;
+      width: 133px;
+        
+        h1 a{display: none;}
+    }
+  }
+
+  .footer-subscribe {
+    display: inline-block;
+    vertical-align: top;
+
+    p {
+      margin-bottom: 19px;
+    }
+  }
+
+  form {
+    input {
+      background-color: #ebebeb;
+      border: 1px solid black;
+
+      &[type="email"] {
+        margin-right: -6px;
+        padding: 6px 0 5px 13px;
+        width: 215px;
+
+        font: {
+          family: Georgia;
+          style: italic;
+          size: 14 / 18 * 1em;
+          weight: normal;
+        }
+      }
+
+      &[type="submit"] {
+        text-transform: uppercase;
+        padding: 4px 20px 3px 20px;
+
+        font: {
+          family: 'futura-pt';
+          weight: 700;
+          size: 14 / 16 * 1em;
+        }
+      }
+    }
+  }
+}
+
+.footer-copyright {
+  background-color: #4d4d4d;
+  color: rgb(204, 204, 204);
+  text-align: center;
+  padding: 22px 0 16px 0;
+
+  font: {
+    size: 12 / 16 * 1em;
+    weight: 300;
+  }
+
+  a {
+    color: rgb(204, 204, 204);
+
+    font: {
+      family: Georgia;
+      size: 12px;
+      weight: normal;
+    }
+
+    &:last-child {
+      font-style: normal;
+    }
+  }
+}
+
+
+
+@media only screen and (min-width:320px) and (max-width: 999px)  {
+
+	footer{
+	    background-color: #4d4d4d;
+		color: #efefef !important;
+	}
+	
+	footer .footer-container{
+		padding: 25px 0 65px 0 !important;
+	}
+
+	footer figure, .footer-links li, .footer-subscribe{
+		display: none !important;
+	}
+	.footer-links-lists{
+		text-align: center;
+		display: block !important;
+    		margin: 0 !important;
+		padding:0 !important;
+		border: none !important;	
+	}
+	.footer-links{
+		width: inherit !important;
+		display: block !important;	
+        
+        h1 a{
+            color: inherit;
+            font: inherit;
+            display: inherit !important;
+            margin-bottom: 16px;
+        }
+        span{display: none;}
+	}
+	.footer-layout-left{
+		display: block !important;
+		margin: 0 auto !important;
+		text-align: center !important;
+	}
+	footer .footer-links-lists p{
+		font-size: 0.922222em !important;
+	    	margin-bottom: 16px !important;
+	    	margin-top: -13px !important;
+		color: #efefef !important;
+	}
+	footer .footer-social {
+		position: relative !important;
+    		top: 270px !important;
+		margin: 0 !important;
+		color: #efefef !important;
+	}
+	footer .footer-social li a{
+		color: #efefef !important;
+	}
+	.footer-copyright{
+		padding-left: 10%;
+		padding-right: 10%	
+	}
+
+}
+
+@media only screen and (min-width:1000px) and (max-width:1279px) {
+    footer{
+        .footer-container{
+            text-align: center;
+            .footer-subscribe{
+                display: block;
+                margin-top: 25px;
+            }
+
+            .footer-links-lists{  
+                text-align: left;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,105 @@
+<% self.title = "Natty : Stores" %>
+<% @body_id = 'stores-index' %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<div class="stores-index-header">
+    <h1 class="">STORES</h1>
+</div>
+
+<div class="featured-store">
+    <div class="featured-store-carousel">
+      <% @featured.each do |store| %>
+        <div class="store-count">
+          <%= image_tag store.image.attachment.url,  class: 'featured-banner-image'%>
+            <div class="featured-logo-image"><%= image_tag store.logo.attachment.url %></div>
+          <!--<div class="featured-store-rating"></div>-->
+          <div class="featured-store-about">
+              <div class="featured-store-name"><span><%= store.name %></span></div>
+              <div class='featured-store-description'><p><%= store.description %></p></div>
+            <div class="featured-store-link"><%= link_to 'Visit Store', store_path(store) %></li></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+
+<div class="stores-filter">
+  <h2>SORT</h2>
+  <div class="stores-sort-type">
+    <fieldset>
+      <%= radio_button_tag 'type', 'all', true %>
+      <%= label_tag 'type_all', 'All' %>
+    </fieldset>
+    <fieldset>
+      <%= radio_button_tag 'type', 'popular' %>
+      <%= label_tag 'type_popular', 'Most Popular' %>
+    </fieldset>
+    <fieldset>
+      <%= radio_button_tag 'type', 'new_asc' %>
+      <%= label_tag 'type_new_asc', 'New' %>
+    </fieldset>
+    <fieldset>
+      <%= radio_button_tag 'type', 'new_desc' %>
+      <%= label_tag 'type_new_desc', 'New' %>
+    </fieldset>
+  </div>
+  <h2>KEYWORD</h2>
+  <div class="stores-filter-keyword"><input type="text" name="stores-filter-keyword" placeholder="Filter by Keyword..."></div>
+  <h2>Categories</h2>
+  <div class="stores-filter-categories">
+    <a href="#" class="stores-filter-categories-reset">Reset</a>
+    <fieldset>
+      <%= check_box_tag 'categories[all]', 'all', true %>
+      <%= label_tag 'categories[all]', 'All' %>
+    </fieldset>
+    <% main_categories.each do |category| %>
+      <fieldset>
+        <%= check_box_tag "categories[#{category.name}]", category.name %>
+        <%= label_tag "categories[#{category.name}]", category.name.capitalize %>
+      </fieldset>
+    <% end %>
+  </div>
+  <h2>Price</h2>
+  <div class="price-slider-block">
+    <div class="min-price">
+        <label for="min-price-input">Min:</label>
+        <input type="text" name="min-price-input" id="min-price-input" class="sliderValue" data-index="0" value="<%= Spree::Store.min_price %>" />
+    </div>
+    <div class="min-max-slider-container">
+        <div id="filter-price" min="<%= Spree::Store.min_price %>"  max="<%= Spree::Store.max_price %>"></div>
+    </div> 
+    <div class="max-price">
+        <label for="max-price-input">Max:</label>
+        <input type="text" name="max-price-input" id="max-price-input" class="sliderValue" data-index="1" value="<%= Spree::Store.max_price %>" />
+    </div>
+  </div>
+</div>
+
+
+<!--<h1>Stores</h1>
+
+<ul class="stores-index-list">
+  <%= render @stores %>
+</ul>-->
+
+  <div class="stores-index-header">
+    <div class="stores-index-heading">
+      <h2>Stores
+        <span class="stores-filter-invoke">FILTER<i style="margin-left: 10px;"class="fa fa-chevron-circle-right"></i></span>
+      </h2>
+    </div>
+  </div>
+  <div class="stores-index-stores-listsection">
+    <div class="stores-index-stores-listsection-container">
+        <ul class="stores-index-stores-list">
+         <%= render @stores %>
+        </ul>
+        <div class="stores-index-stores-filter">
+          <div class="filter-close">
+            <h2>FILTER<span class="fa fa-times"></span></h2>
+          </div>
+        </div>
+    </div>
+  </div>
+<div class="paginator">
+  <%= link_to "Load More", stores_path(page: @page + 1), remote: true %>
+</div>

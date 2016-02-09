@@ -1,0 +1,76 @@
+<% self.title = "Natty : Create a Store" %>
+<% @body_id = 'page-signup' %>
+<%= render 'spree/shared/error_messages', target: resource %>
+<div class="signup-banner">
+  <%= image_tag 'spree/frontend/seller-signup-banner.png' %>
+</div>
+<div class="signup-content">
+  <%= form_for resource, :as => :spree_user, :url => spree.registration_path(resource), html: {class: 'form-wide'} do |f| %>
+    <figure>
+      <%= image_tag 'logo/natty-large.png' %>
+    </figure>
+    <h1>Natty is the perfect place for passionate makers to sell their products.</h1>
+    <div class="spacer-red"></div>
+    <h2 class="title-startastore">How It Works</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dignissim facilisis laoreet. Etiam gravida nec dui accumsan ultricies. Sed imperdiet pretium gravida. In hac habitasse platea dictumst.</p>
+    <div class="diagram">
+	  <div class="form-howitworks-carousel" style="display:none;">
+	    <div>
+	      <div class="carousel-step">Step 1</div>
+	      <div class="carousel-image"><%= image_tag 'spree/frontend/flowchart-1.png' %></div>
+	      <div class="carousel-title">You upload your products in your own Store onNatty</div>
+	    </div>
+	    <div>
+	      <div class="carousel-step">Step 2</div>
+	      <div class="carousel-image"><%= image_tag 'spree/frontend/flowchart-2.png' %></div>
+	      <div class="carousel-title">We tell your story and market your products</div>
+	    </div>
+	    <div>
+	      <div class="carousel-step">Step 3</div>
+	      <div class="carousel-image"><%= image_tag 'spree/frontend/flowchart-3.png' %></div>
+	      <div class="carousel-title">Customers order and pay through Natty's secure checkout</div>
+	    </div>
+	    <div>
+	      <div class="carousel-step">Step 4</div>
+	      <div class="carousel-image"><%= image_tag 'spree/frontend/flowchart-4.png' %></div>
+	      <div class="carousel-title">We notify you so you can work your magic and have the product ready to ship</div>
+	    </div>
+	    <div>
+	      <div class="carousel-step">Step 5</div>
+	      <div class="carousel-image"><%= image_tag 'spree/frontend/flowchart-5.png' %></div>
+	      <div class="carousel-title">Our logistics partner picks up package and delivers it to its destination.</div>
+	    </div>
+	     <div>
+	      <div class="carousel-step">Step 6</div>
+	      <div class="carousel-image"><%= image_tag 'spree/frontend/flowchart-6.png' %></div>
+	      <div class="carousel-title">We pay you</div>
+	    </div>
+	  </div>
+
+     <div class="flowchart-container"> <%= image_tag 'spree/frontend/howitworks-flowchart.png', class: 'diagram' %> </div>
+    </div>
+    <div class="signup-whyjoin">
+      <div class="signup-whyjoin-content">
+        <ul>
+          <h2 class="title-startastore">Why Join?</h2>
+          <li>Simple Setup</li>
+          <li>No Setup Fees or Monthly Charges</li>
+          <li>Powerful Management Tools</li>
+          <li>Flexibility</li>
+          <li>Support and Guidance</li>
+          <%= link_to 'Learn More', spree.learn_more_path, class: 'form-info-button' %>
+        </ul>
+        <ul>
+          <h2 class="title-startastore">Your Toolkit</h2>
+          <li>Your Own Storefront</li>
+          <li>Easy Order Management</li>
+          <li>Advanced Statistics</li>
+          <li>Promotional Tools</li>
+          <li>Multiple Payment Channels</li>
+          <%= link_to 'About Toolkit', spree.about_toolkit_path, class: 'form-info-button' %>
+        </ul>
+      </div>
+    </div>
+    <%= render :partial => 'spree/shared/user_seller_form', :locals => { :f => f } %>
+  <% end %>
+</div>

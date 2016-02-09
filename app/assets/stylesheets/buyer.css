@@ -1,0 +1,18 @@
+/*
+  *= require spree/reset
+  *= require fancybox
+  *= require slick
+  *= require jquery-ui/slider
+  *= require spree/general
+  *= require font-awesome
+  *= require spree/frontend/header
+  *= require spree/frontend/footer
+  *= require spree/frontend/signup
+  *= require spree/frontend/carousel
+  *= require spree/frontend/store
+  *= require spree/frontend/productdetails
+  *= require spree/frontend/cart
+  *= require spree/frontend/checkout
+  *= require spree/frontend/aboutus
+  *= require spree/frontend/filter
+*/

@@ -1,0 +1,9 @@
+<%= "Dear #{@user.first_name}," %>
+
+<%= "Congratulations! Your product #{@product.name} has been approved!" %>
+
+Your product is now available for purchase and you may view it at:
+<%= store_product_url @store, @product %>
+
+Thanks,
+Natty.in

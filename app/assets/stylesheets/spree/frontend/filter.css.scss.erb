@@ -1,0 +1,164 @@
+.stores-filter{
+    color: #666666;
+    background-color: #fff;
+    text-align: left;
+    
+    h2{
+        font: inherit;
+        font-weight: 600;
+        font-size: 0.875em;
+        text-transform: uppercase;
+    }
+    
+    .stores-sort-type{
+        width: 100%;
+        display: block;
+        padding: 15px 0 15px 0;
+        border-bottom: 1px solid #D4D4D4;
+        margin-bottom: 20px;
+        
+        fieldset{ 
+            display: inline-block; 
+            text-transform: uppercase;
+            font-size: 0.775em;
+            margin: 0 5px;
+            
+            input[type=radio]{
+                display: none;
+            }
+            input[type=radio] + label {
+              color: inherit;
+            } 
+            input[type=radio]:checked + label {
+              color: #000;
+            }
+        }
+    }
+    
+    .stores-filter-keyword{
+        padding: 10px 0 15px 0;
+        border-bottom: 1px solid #D4D4D4;
+        margin-bottom: 20px;
+        
+        input{
+            width: 100%;
+            border: 1px solid #D4D4D4;
+            border-bottom: 1px solid #BDBDBD;
+            padding: 3px 5px;
+            box-sizing: border-box;
+
+            &::-webkit-input-placeholder {
+            color: #ADD3C9!important;
+            }
+
+            &:-moz-placeholder { /* Firefox 18- */
+            color: #ADD3C9 !important;  
+            }
+
+            &::-moz-placeholder {  /* Firefox 19+ */
+            color: #ADD3C9  !important;  
+            }
+
+            &:-ms-input-placeholder {  
+            color: #ADD3C9  !important;  
+            }
+        }
+    }
+    
+    .stores-filter-categories{
+        font-weight: inherit;
+        font-size: 0.875em;
+        color: inherit;
+        padding: 10px 0 20px 0;
+        border-bottom: 1px solid #D4D4D4;
+        margin-bottom: 20px;
+        
+        a{
+            position: relative;
+            top: -25px;
+            float: right;
+            margin-right: 10px;
+            color: #E96262;
+            font-style: italic;
+        }
+        
+        fieldset{ 
+            margin: 10px 0;
+            padding: 0 5px;
+            
+            input[type=checkbox]{
+                display: none;
+            }
+            input[type=checkbox] + label {
+              color: inherit;
+            } 
+            input[type=checkbox]:checked + label {
+              color: #E96262;
+            }
+        }
+    }
+    
+    
+    .price-slider-block{
+        display: block;
+        margin: 15px 0 20px 0;
+        div{
+            display: inline-block;
+        }
+        
+        .min-price, .max-price{
+            width: 15%;
+            box-sizing: border-box;
+            font: inherit;
+            label{ 
+                display: block;
+                font-size: 0.775em;
+                font-weight: normal;
+                margin-bottom: 5px;
+            }
+            input{
+                width: 100%;
+                height: 25px;
+                text-align: center;
+                box-sizing: border-box;
+                border: 1px solid #D4D4D4   ;
+            }
+        }
+        
+        .min-max-slider-container{
+            width: 65%;
+            box-sizing: border-box;
+            padding: 0 20px;
+            vertical-align: middle;
+            
+            #filter-price, .ui-slider-horizontal{
+                height: 0.3em;
+                display: block;
+                background: #A4A4A4;
+                border: none;
+                
+                .ui-slider-range{
+                    background: #E96262;
+                }
+                
+                .ui-slider-handle {
+                    width: 1em;
+                    height: 1em;
+                    top: -.38em;
+                    border-radius: 99px;
+                    background: #fff;
+                    border: 1px solid #e96262;
+                }
+            }
+        }
+    
+    }
+    
+}
+
+
+/*--------------------------------------------------------Mobile view filter ----------------------------------------------*/
+
+@media only screen and (min-width:320px) and (max-width: 999px) {
+
+}

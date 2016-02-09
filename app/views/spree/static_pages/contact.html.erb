@@ -1,0 +1,84 @@
+<% self.title = 'Natty : Contact' %>
+<% @body_id = 'page-static' %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<div class="static-banner">
+  <%= image_tag 'spree/frontend/signup-banner.png' %>
+</div>
+<div class="static-content">
+  <div class="contacts">
+      <div class="contact-form">
+        <h2>Get in touch</h2>
+        <p>Reach us at:</p>
+          <h3>080-33130000</h3>
+          <span class="divider"></span>
+          <div>
+            <p>Or you can write to us using the form below</p>
+            <%= form_for @user, url: contact_submit_path, html: {multipart: true, role: 'form', class: 'contact_form'} do |f| %>
+              <div class="form-field form-field-short">
+                <%= f.label :first_name, Spree.t(:first_name) %>
+                <%= f.text_field :first_name %>
+              </div>
+              <div class="form-field form-field-short">
+                <%= f.label :last_name, Spree.t(:last_name) %>
+                <%= f.text_field :last_name %>
+              </div>
+              <div class="form-field">
+                <%= f.label :email, Spree.t(:email) %>
+                <%= f.email_field :email, :class => 'title' %>
+              </div>
+              <div class="form-field">
+                <%= label_tag :subject %>
+                <%= text_field_tag :subject %>
+              </div>
+              <div class="form-field">
+                <%= label_tag :message %>
+                <%= text_area_tag :message %>
+              </div>
+              <div class="messageButton"><%= f.submit 'Send Message' %></div>
+            <% end %>
+              <p>Please allow 2-5 days business days for Natty to write back to you.</p>
+        </div>
+    </div>
+    <div class="contact-map">
+        <h2>Find us</h2>
+        <div class="map-container" id="locationMap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.5580638259794!2d77.73816564999024!3d13.06377851633933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1000baff4f0f%3A0x79061ed77b1f5ba1!2sRANGER+APPAREL+EXPORT+PVT+LTD.!5e0!3m2!1sen!2sin!4v1453877137890" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+<!--        <script>
+          function initMap() {
+            var mapDiv = document.getElementById('locationMap');
+            var map = new google.maps.Map(mapDiv, {
+              center: {lat: 44.540, lng: -78.546},
+              zoom: 8
+            });
+          }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>-->
+        <div class="info-container">
+            <div class="address">
+                <span>Natty Corporate Office</span>
+                <p>#136, Bommanahalli, Bidrahalli, Hobli, Boodhikere Cross, Devanahalli Airport Link Road, Virgonagar Bangalore - 560049</p>
+            </div>
+            <div class="contact-info">
+                <div><i class="fa fa-phone"></i><p>080-33130000</p></div>
+                <div><i class="fa fa-envelope-o"></i><p>hello@natty.in</p></div>
+            </div>
+        </div>
+        <div class="links-container">
+            <div class="target-link"><h3><%= link_to 'Track your order', '#' %></h3>
+                <i class="fa fa-angle-right"></i>
+            </div>
+            <div class="target-link"><h3><%= link_to 'Shipping and Returns', spree.shippingreturns_path %></h3>
+                <i class="fa fa-angle-right"></i>
+            </div>
+            <div class="target-link"><h3><%= link_to 'FAQS', spree.faqs_path %></h3>
+                <i class="fa fa-angle-right"></i>
+            </div>
+        </div>
+        <h2>Want to join natty </h2>
+        <p>Think you might be a good fit? We are always on the lookout for good talent!</p>
+        <div class="brand-static-button">
+            <%= link_to 'Join Us', spree.careers_path %>
+        </div>
+    </div>
+
+  </div>
+</div>

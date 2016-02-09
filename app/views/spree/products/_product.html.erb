@@ -1,0 +1,30 @@
+<li>
+  <a href="<%= store_product_path(@store, product) %>">
+    <%= image_tag product.variants.first.images.first.attachment.url(:thumb) %>
+    <div class="partial-product">
+      <div class="partial-product-details">
+        <p class="partial-product-name"><%= product.name %></p>
+        <p class="partial-product-store"> by <%= product.store.name %></p>
+        <p class="partial-product-price"><%= fa_icon 'rupee' %> <%= number_with_delimiter(product.lowest_price.to_i, locale: :in) %></p>
+        <div class="partial-product-like">
+        </div>
+      </div>
+      <div class="partial-product-cart">
+        <%= form_for :order, url: populate_orders_path do |f| %>
+          <%= hidden_field_tag 'store_id', product.store.id %>
+          <%= hidden_field_tag "variant_id", product.master.id %>
+          <%= hidden_field_tag :quantity, 1 %>
+          <% if product.variants.count > 1 %>
+            <%= button_tag type: :submit, disabled: true do %>
+              Variants
+            <% end %>
+          <% else %>
+            <%= button_tag type: :submit do %>
+              Add to Bag
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </a>
+</li>

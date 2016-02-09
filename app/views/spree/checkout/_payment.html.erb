@@ -1,0 +1,43 @@
+<h2>Payment Method</h2>
+<fieldset>
+  <legend>Choose Payment Option</legend>
+  <div data-hook="checkout_payment_step">
+    <ul id="payment-method-fields">
+      <% @order.available_payment_methods.each do |method| %>
+        <li>
+          <label>
+            <%= radio_button_tag "order[payments_attributes][][payment_method_id]", method.id, method == @order.available_payment_methods.first %>
+            <% if method.name == 'PayU India' %>
+              <p>Credit/ Debit Card/ Net Banking <em>via</em></p>
+              <div><%= image_tag 'spree/frontend/payu-in.png' %></div>
+            <% else %>
+              <p>Payment Wallet <em>via</em></p>
+              <div><%= image_tag 'spree/frontend/payu-money.png' %></div>
+            <% end%>
+          </label>
+        </li>
+      <% end %>
+    </ul>
+    <ul id="payment-methods">
+      <% @order.available_payment_methods.each do |method| %>
+        <li id="payment_method_<%= method.id %>">
+          <fieldset>
+            <%= render :partial => "spree/checkout/payment/#{method.method_type}", :locals => { :payment_method => method } %>
+          </fieldset>
+        </li>
+      <% end %>
+    </ul>
+    <div class="cart-total-promo">
+      <div class="cart-total-promo-image">
+        <%= image_tag 'spree/frontend/cart-coupon.png' %>
+      </div>
+      <div class="cart-total-promo-input">
+        <p>Have a Promo Code?</p>
+        <%= form.text_field :coupon_code, :size => 10, placeholder: 'Enter Code...' %>
+      </div>
+    </div>
+  </div>
+</fieldset>
+<div class="form-button">
+  <%= submit_tag 'Proceed to Review Order' %>
+</div>

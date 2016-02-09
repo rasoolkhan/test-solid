@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <td>
+      <p class="lede">
+        <%= "Dear #{@user.first_name}," %>
+      </p>
+      <p>
+        <%= "Congratulations! Your product #{@product.name} has been approved!" %>
+      </p>
+      <p>
+        Your product is now available for purchase and you may view it <a href='<%= store_product_url @store, @product %>'>here</a>.
+      </p>
+      <p>
+        Thanks,
+      </p>
+      <p>
+        Natty.in
+      </p>
+    </td>
+    <td class="expander"></td>
+  </tr>
+</table>

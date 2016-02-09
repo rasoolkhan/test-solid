@@ -1,0 +1,27 @@
+<div class="fb-signup-container"><a class="signup-facebook" href="<%= spree_user_omniauth_authorize_path(:facebook) %>">
+  <%= fa_icon 'facebook' %>
+  <span>Signup with Facebook</span>
+</a></div>
+<div class="login-spacer"></div>
+<h2>Signup with Email</h2>
+<div class="form-field form-field-short">
+  <%= f.label :first_name, Spree.t(:first_name) %>
+  <%= f.text_field :first_name %>
+</div>
+<div class="form-field form-field-short">
+  <%= f.label :last_name, Spree.t(:last_name) %>
+  <%= f.text_field :last_name %>
+</div>
+<div class="form-field">
+  <%= f.label :email, Spree.t(:email) %>
+  <%= f.email_field :email, :class => 'title' %>
+</div>
+<div class="form-field">
+  <%= f.label :password, Spree.t(:password) %>
+  <%= f.password_field :password, :class => 'title' %>
+</div>
+<div class="form-field">
+  <%= f.label :password_confirmation, Spree.t(:confirm_password) %>
+  <%= f.password_field :password_confirmation, :class => 'title' %>
+</div>
+<div class="loginButton"><%= f.submit 'Sign Up' %></div>

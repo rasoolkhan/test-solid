@@ -1,0 +1,66 @@
+<table border="1">
+  <tr>
+    <th>Company Name</th>
+    <th>Address Line 1</th>
+    <th>Address Line 2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Pin Code</th>
+    <th>Primary Contact</th>
+    <th>Primary Email</th>
+    <th>Primary Phone</th>
+    <th>Secondary Contact</th>
+    <th>Secondary Email</th>
+    <th>Secondary Phone</th>
+    <th>Bank Name</th>
+    <th>Bank Branch</th>
+    <th>Bank Address</th>
+    <th>Account Name</th>
+    <th>Account Number</th>
+    <th>IFSC</th>
+    <th>MICR</th>
+    <th>PAN</th>
+    <th>TIN</th>
+    <th>VAT</th>
+    <th>Store Name</th>
+    <th>Store Facebook URL</th>
+    <th>Store Twitter URL</th>
+    <th>Store Website URL</th>
+    <th>Status</th>
+    <th>Products</th>
+    <th>Variants</th>
+  </tr>
+  <% Spree::Store.where.not(id: 1).each do |store| %>
+    <tr>
+      <td><%= store.seller.name %></td>
+      <td><%= store.office_address.address.address1 %></td>
+      <td><%= store.office_address.address.address2 %></td>
+      <td><%= store.office_address.address.city %></td>
+      <td><%= store.office_address.address.state.name %></td>
+      <td><%= store.office_address.address.zipcode %></td>
+      <td><%= "#{store.seller.user.first_name} #{store.seller.user.last_name}" %></td>
+      <td><%= store.seller.user.email %></td>
+      <td><%= store.office_address.address.phone %></td>
+      <td><%= store.seller.alternate_name %></td>
+      <td><%= store.seller.alternate_email %></td>
+      <td><%= store.seller.alternate_phone %></td>
+      <td><%= store.seller.bank_name %></td>
+      <td><%= store.seller.bank_branch %></td>
+      <td><%= store.seller.bank_address %></td>
+      <td><%= store.seller.bank_account_name %></td>
+      <td><%= store.seller.bank_account_number %></td>
+      <td><%= store.seller.bank_ifsc %></td>
+      <td><%= store.seller.bank_micr %></td>
+      <td><%= store.seller.bank_pan %></td>
+      <td><%= store.seller.bank_tin %></td>
+      <td><%= store.seller.bank_vat %></td>
+      <td><%= store.name %></td>
+      <td><%= store.social_urls.split(",")[0] %></td>
+      <td><%= store.social_urls.split(",")[1] %></td>
+      <td><%= store.social_urls.split(",")[2] %></td>
+      <td><%= store.status %></td>
+      <td><%= store.products.count %></td>
+      <td><%= Spree::Variant.where(is_master: false, product: store.products).count %></td>
+    </tr>
+  <% end %>
+</table>

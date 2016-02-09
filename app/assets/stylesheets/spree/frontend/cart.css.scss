@@ -1,0 +1,303 @@
+.cart-heading {
+  margin: 42px 0 13px 0;
+  text-align: center;
+
+  h1 {
+    color: rgb(77, 77, 77);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+
+    font: {
+      family: "futura-pt";
+      size: 30 / 16 * 1em;
+      weight: 400;
+    }
+  }
+
+  p {
+    color: rgb(233, 97, 97);
+
+    font: {
+      family: Georgia;
+      size: 12 / 18 * 1em;
+      weight: bold;
+      style: italic;
+    }
+  }
+}
+
+#cart {
+  .cart-line-sno, .cart-line-amount, .cart-line-total {
+    color: rgb(51, 51, 51);
+
+    font: {
+      family: 'futura-pt';
+      size: 20 / 16 * 1em;
+      weight: 500;
+    }
+  }
+
+  .cart-line-quantity {
+    .line_item_quantity_change {
+      display: inline-block;
+      width: 30px;
+      color: rgb(102, 102, 102);
+
+      font: {
+        size: 14 / 18 * 1em;
+      }
+    }
+
+    input {
+      border: 1px solid #c0c0c0;
+      padding: 0;
+      text-align: center;
+      width: 45px;
+      height: 45px;
+
+      font: {
+        family: 'futura-pt';
+        size: 20 / 16 * 1em;
+        weight: 500;
+      }
+    }
+  }
+}
+
+.cart-table {
+  width: 1280px;
+  margin: 0 auto;
+  border-top: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  color: rgb(102, 102, 102);
+  text-transform: uppercase;
+
+  thead {
+    border-bottom: 1px solid #c0c0c0;
+
+    font: {
+      family: 'futura-pt';
+      size: 14 / 16 * 1em;
+      weight: 400;
+    }
+
+    th {
+      height: 64px;
+      vertical-align: middle;
+    }
+  }
+
+  tbody {
+    text-align: center;
+
+    td {
+      height: 181px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.cart-line-product-image {
+  display: inline-block;
+  margin-right: 37px;
+}
+
+.cart-line-product-description {
+  display: inline-block;
+  max-width: 282px;
+
+  h4 {
+    text-transform: none;
+    margin-bottom: 3px;
+
+    font: {
+      family: Georgia;
+      size: 24 / 18 * 1em;
+      weight: bold;
+    }
+
+    a {
+      color: rgb(51, 51, 51);
+    }
+  }
+
+  p {
+    color: rgb(102, 102, 102);
+    text-transform: none;
+    margin-bottom: 16px;
+
+    font: {
+      family: Georgia;
+      size: 12 / 18 * 1em;
+      weight: normal;
+      style: italic;
+    }
+  }
+
+  h3 {
+    color: rgb(102, 102, 102);
+    text-transform: none;
+
+    font: {
+      family: 'futura-pt';
+      size: 12 / 16 * 1em;
+      weight: 500;
+    }
+  }
+}
+
+.cart-totals {
+  margin: 40px auto 22px auto;
+  width: 1280px;
+  padding-bottom: 33px;
+  border-bottom: 1px solid #c0c0c0;
+
+  .cart-total-amount {
+    float: right;
+
+    h5 {
+      display: inline-block;
+      color: rgb(102, 102, 102);
+      text-transform: uppercase;
+      margin-right: 66px;
+
+      font: {
+        family: 'futura-pt';
+        size: 16 / 16 * 1em;
+        weight: 500;
+      }
+    }
+
+    p {
+      display: inline-block;
+      color: rgb(233, 97, 97);
+      margin-right: 34px;
+
+      font: {
+        family: 'futura-pt';
+        size: 24 / 16 * 1em;
+        weight: 500;
+      }
+    }
+  }
+}
+
+.cart-total-promo {
+  display: inline-block;
+  background-color: #f8f7f7;
+  padding: 15px 78px 12px 18px;
+
+  .cart-total-promo-image {
+    display: inline-block;
+  }
+
+  .cart-total-promo-input {
+    display: inline-block;
+    margin-left: 13px;
+    vertical-align: top;
+
+    p {
+      color: rgb(102, 102, 102);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+
+      font: {
+        family: 'futura-pt';
+        size: 14 / 16 * 1em;
+        weight: 500;
+      }
+    }
+
+    input {
+      width: 185px;
+      height: 28px;
+      color: rgb(102, 102, 102);
+      padding: 0 0 0 7px;
+      margin-right: -5px;
+      border: none;
+
+      font: {
+        family: Georgia;
+        size: 12 / 18 * 1em;
+        weight: normal;
+        style: italic;
+      }
+    }
+
+    button {
+      width: 28px;
+      height: 28px;
+      border: none;
+      background-color: #e96161;
+      color: white;
+
+      font: {
+        size: 12 / 18 * 1em;
+      }
+    }
+  }
+}
+
+.cart-nav {
+  width: 1280px;
+  margin: 0 auto;
+
+  .cart-nav-links {
+    float: right;
+
+    li {
+      display: inline-block;
+    }
+
+    .cart-nav-links-continue {
+      display: inline-block;
+      text-transform: uppercase;
+      color: rgb(233, 98, 98);
+      border: 1px solid rgb(233, 98, 98);
+      padding: 12px 22px;
+      margin-right: 2px;
+
+      font: {
+        family: 'futura-pt';
+        size: 15 / 16 * 1em;
+        weight: 500;
+      }
+    }
+
+    button {
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border: none;
+      background-color: rgb(233, 98, 98);
+      color: white;
+
+      font: {
+        family: 'futura-pt';
+        size: 15 / 16 * 1em;
+        weight: 500;
+      }
+    }
+  }
+}
+
+.cart-nav-icons {
+  display: inline-block;
+
+  li {
+    display: inline-block;
+    margin-right: 46px;
+
+    p {
+      display: inline-block;
+      vertical-align: top;
+      margin: 17px 0 0 13px;
+      color: rgb(233, 97, 97);
+
+      font: {
+        family: 'futura-pt';
+        size: 14 / 16 * 1em;
+        weight: 500;
+      }
+    }
+  }
+}

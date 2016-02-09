@@ -1,0 +1,146 @@
+<% self.title = "Natty : #{@product.name}" %>
+<% @body_id = 'products-show' %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<script>
+  var product = '<%= @product.id %>';
+</script>
+<div class="products-show-breadcrumb">
+  <% @product.taxons.first.pretty_name.split(' -> ').each do |category| %>
+    <% if category == "categories" %>
+      <%= link_to 'natty', spree.root_path %>
+    <% else %>
+      <%= link_to(' > ' + category, seo_url(Spree::Taxon.where(name: category).first)) %>
+    <% end %>
+  <% end %>
+</div>
+<div class="products-show-upper">
+<div class="products-show-images">
+  <% @selectHash[:images][:product].each_with_index do |url, index| %>
+    <div data-thumb="<%= @selectHash[:images][:mini][index] %>"><%= image_tag url %></div>
+  <% end %>
+</div>
+<div class="products-show-interaction">
+  <h1><%= @product.name %></h1>
+  <h6>by <%= @product.store.name %></h6>
+  <h3>
+    <% if @selectHash[:menus].present? %>
+      <%= @selectHash[:menus][0][:value].presentation %> <%= "+ #{@selectHash[:menus][1][:value].presentation}" if @selectHash[:menus].length > 1 %>
+    <% end %>
+  </h3>
+  <div class="products-show-interaction-pricestocksku">
+    <div class="products-show-interaction-price">
+      <p><%= fa_icon 'rupee' %> <span><%= number_with_delimiter(@selectHash[:price].to_i, locale: :in) %></span></p>
+    </div>
+    <div class="products-show-interaction-stocksku">
+      <% if @product.available? %>
+        <% if @selectHash[:available] %>
+          <p class="products-show-interaction-stock stock-active">In Stock</p>
+        <% else %>
+          <p class="products-show-interaction-stock stock-inactive">Out of Stock</p>
+        <% end %>
+      <% else %>
+        <p class="products-show-interaction-stock stock-inactive">Not yet available</p>
+      <% end %>
+      <p class="products-show-interaction-sku">SKU <%= @selectHash[:sku] %></p>
+    </div>
+  </div>
+  <%= form_for :order, url: populate_orders_path do |f| %>
+    <%= hidden_field_tag 'store_id', @selectHash[:store] %>
+    <%= hidden_field_tag 'variant_id', @selectHash[:variant] %>
+    <div class="products-show-interaction-options">
+      <ul>
+        <% @selectHash[:menus].each do |menu| %>
+          <li>
+            <% container = [] %>
+            <% menu[:values].each do |value| %>
+              <% container << [value.presentation, value.id] %>
+            <% end %>
+            <%= label_tag menu[:type].presentation, menu[:type].presentation %>
+            <%= select_tag menu[:type].presentation, options_for_select(container, menu[:value].id), data: {type: menu[:type].id} %>
+          </li>
+        <% end %>
+        <li>
+          <%= label_tag :quantity %>
+          <%= number_field_tag :quantity, 1, min: 1 %>
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="products-show-custom">
+      <p>This product can be customized.</p>
+      <p>View options</p>
+    </div> -->
+    <div class="products-show-cart">
+      <%= button_tag type: :submit do %>
+        Add to Bag
+      <% end %>
+      <%= link_to 'Wishlist', '#' %>
+    </div>
+  <% end %>
+  <div class="products-show-social">
+  <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-google-plus"></i><i class="fa fa-envelope"></i>
+  </div>
+  <div class="products-show-shipping"></div></div>
+</div>
+
+<div class="products-show-mid"><div class="products-show-mid-container">
+  <div class="products-show-description">
+  <h4>Product Description</h4>
+  <p><%= @product.description %></p>
+</div>
+<div class="products-show-lists">
+  <h4>Product Specifications</h4>
+  <ul class="products-show-specifications">
+    <% @product.specifications.each do |specification| %>
+      <% image = case specification.spec %>
+        <% when 'eco_friendly' then 'specifications-ecofriendly' %>
+        <% when 'hand_crafted' then 'specifications-handcrafted' %>
+        <% when 'customizable' then 'specifications-customizable' %>
+        <% when 'exclusive' then 'specifications-exclusive' %>
+        <% when 'made_in_india' then 'specifications-madeinindia' %>
+      <% end %>
+      <li>
+        <%= image_tag "spree/frontend/#{image}.png" %>
+        <p><%= specification.spec.titleize %></p>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="products-show-properties">
+    <% if @product_properties.count > 0 %>
+      <h5><%= @product.properties_label %></h5>
+      <% @product_properties.each do |product_property| %>
+        <li><%= "#{product_property.property.presentation}: #{product_property.value}" %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <ul class="products-show-features">
+    <h5>Features</h5>
+    <% @product.product_features.each do |feature| %>
+      <li><%= feature.description_line %></li>
+    <% end %>
+  </ul>
+</div></div></div>
+
+<div class="products-show-lower">
+<div class="products-show-reviews">
+</div>
+<div class="products-show-question">
+  <h5>Have a question about this product?</h5>
+  <h4>Ask the seller.</h4>
+  <%= form_for @product, url: store_product_question_path(@product.store, @product) do |f| %>
+    <%= text_area_tag :question, nil, placeholder: 'Ask a question...' %>
+    <%= f.submit "Ask a Question" %>
+  <% end %>
+</div></div>
+<div class="stores-show-products-header">
+  <div class="stores-show-products-heading">
+    <h2>More from this Store</h2>
+  </div>
+</div>
+<div class="stores-show-products-listsection">
+  <ul class="stores-show-products-list">
+    <%= render @products %>
+  </ul>
+</div>
+<div class="paginator">
+  <%= link_to "Load More", store_product_path(@store, @product, page: @page + 1), remote: true %>
+</div>

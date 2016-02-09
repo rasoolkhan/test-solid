@@ -1,0 +1,188 @@
+<% self.title = "Natty : #{@store.name} : Variants" %>
+<% content_for :dashboard do %>
+  <%= render 'spree/shared/error_messages', target: @product %>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center m-t-lg">
+          <h2>Store Information</h2>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <%= form_for [:supplier, @store], url: supplier_store_settings_store_path(@store), html: {multipart: true, role: 'form', class: 'form-horizontal settings_store'} do |f| %>
+                    <div class="form-group">
+                      <%= f.label :name, 'Store Name', class: 'col-sm-2 control-label'  %>
+                      <div class="col-sm-10 pname">
+                        <%= @store.name %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :slug, 'URL', class: 'col-sm-2 control-label'  %>
+                      <div class="col-sm-10 pname">
+                        <%= "#{@store.slug}.natty.in" %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :description, 'Store Description *', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                      <%= f.text_area :description, class: 'form-control' %>
+                      </div>
+                    </div>
+                    <h5>Logo</h5>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <table class="table table-striped table-bordered table-hover table-images">
+                          <col width="50%">
+                          <col width="50%">
+                          <thead>
+                            <tr>
+                              <th>Current Image</th>
+                              <th>New Image</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><%= image_tag @store.logo.attachment.url %></td>
+                              <td>
+                                <%= f.fields_for :logo do |store_logo| %>
+                                  <%= store_logo.file_field :attachment %>
+                                <% end %>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <h5>Banner</h5>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <table class="table table-striped table-bordered table-hover table-images">
+                          <col width="50%">
+                          <col width="50%">
+                          <thead>
+                            <tr>
+                              <th>Current Image</th>
+                              <th>New Image</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><%= image_tag @store.image.attachment.url %></td>
+                              <td>
+                                <%= f.fields_for :image do |store_image| %>
+                                  <%= store_image.file_field :attachment %>
+                                <% end %>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Company Name</label>
+                      <div class="col-sm-10 pname">
+                        <p><%= @store.seller.name %></p>
+                      </div>
+                    </div>
+                    <%= f.fields_for :office_address do |office_address| %>
+                      <%= office_address.fields_for :address do |address| %>
+                        <div class="form-group">
+                          <%= address.label :address1, 'Address Line 1 *', class: 'col-sm-2 control-label' %>
+                          <div class="col-sm-10">
+                            <%= address.text_field :address1, class: 'form-control' %>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <%= address.label :address2, 'Address Line 2', class: 'col-sm-2 control-label' %>
+                          <div class="col-sm-10">
+                            <%= address.text_field :address2, class: 'form-control' %>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <%= address.label :city, 'City *', class: 'col-sm-2 control-label' %>
+                          <div class="col-sm-10">
+                            <%= address.text_field :city, class: 'form-control' %>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <%= address.label :state_id, 'State *', class: 'col-sm-2 control-label' %>
+                          <div class="col-sm-10">
+                            <%= address.collection_select :state_id, address.object.country.states.sort, :id, :name, {}, { class: "form-control m-b" } %>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <%= address.label :zipcode, 'Pincode *', class: 'col-sm-2 control-label' %>
+                          <div class="col-sm-10">
+                            <%= address.text_field :zipcode, class: 'form-control' %>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                      <%= label_tag 'Primary Contact', 'Primary Contact', class: 'col-sm-2 control-label'  %>
+                      <div class="col-sm-10 pname">
+                        <%= "#{@store.seller.user.first_name} #{@store.seller.user.last_name}" %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= label_tag 'Primary Email', 'Primary Email', class: 'col-sm-2 control-label'  %>
+                      <div class="col-sm-10 pname">
+                        <%= @store.seller.user.email %>
+                      </div>
+                    </div>
+                    <%= f.fields_for :office_address do |office_address| %>
+                      <%= office_address.fields_for :address do |address| %>
+                        <div class="form-group">
+                          <%= address.label :phone, 'Primary Phone *', class: 'col-sm-2 control-label'  %>
+                          <div class="col-sm-10">
+                            <%= address.phone_field :phone, class: 'form-control' %>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                      <%= label_tag :alternate_name, 'Alternate Contact', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= text_field_tag :alternate_name, @store.seller.alternate_name, class: 'form-control' %></td>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= label_tag :alternate_email, 'Alternate Email', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= text_field_tag :alternate_email, @store.seller.alternate_email, class: 'form-control' %></td>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <%= label_tag :alternate_phone, 'Alternate Email', class: 'col-sm-2 control-label' %>
+                      <div class="col-sm-10">
+                        <%= text_field_tag :alternate_phone, @store.seller.alternate_phone, class: 'form-control' %></td>
+                      </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                      <div class="col-sm-4 pull-right right-button">
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: "spree/supplier/layouts/dashboard" %>

@@ -1,0 +1,16 @@
+<% self.title = "Natty : New Password" %>
+<% @body_id = 'page-signup' %>
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @spree_user } %>
+<div class="signup-banner">
+  <%= image_tag 'spree/frontend/signup-banner.png' %>
+</div>
+<div class="signup-content">
+  <%= form_for @spree_user, :as => :spree_user, :url => spree.update_password_path, :method => :put do |f| %>
+    <h1>New Password</h1>
+    <div class="form-fields">
+      <%= render :partial => 'spree/shared/change_password_form', :locals => { :f => f } %>
+        <div class="loginButton"><%= f.submit 'Submit' %></div>
+    </div>
+  <% end %>
+  <%= render :partial => 'spree/shared/user_static' %>
+</div>

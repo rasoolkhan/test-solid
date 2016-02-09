@@ -1,0 +1,15 @@
+//= require supplier/dropzone/dropzone.js
+//= require supplier/summernote/summernote.min.js
+//= require supplier/colorpicker/bootstrap-colorpicker.min.js
+//= require supplier/cropper/cropper.min.js
+//= require supplier/datapicker/bootstrap-datepicker.js
+//= require supplier/ionRangeSlider/ion.rangeSlider.min.js
+//= require supplier/jasny/jasny-bootstrap.min.js
+//= require supplier/jsKnob/jquery.knob.js
+//= require supplier/nouslider/jquery.nouislider.min.js
+//= require supplier/switchery/switchery.js
+//= require supplier/chosen/chosen.jquery.js
+//= require supplier/fullcalendar/moment.min.js
+//= require supplier/clockpicker/clockpicker.js
+//= require supplier/daterangepicker/daterangepicker.js
+//= require supplier/select2/select2.full.min.js

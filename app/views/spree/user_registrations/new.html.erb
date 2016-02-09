@@ -1,0 +1,15 @@
+<% self.title = "Natty : Signup" %>
+<% @body_id = 'page-signup' %>
+<%= render 'spree/shared/error_messages', target: resource %>
+<div class="signup-banner">
+  <%= image_tag 'spree/frontend/signup-banner.png' %>
+</div>
+<div class="signup-content">
+  <%= form_for resource, :as => :spree_user, :url => spree.registration_path(resource) do |f| %>
+    <h1>Sign Up</h1>
+    <div class="form-fields">
+      <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
+    </div>
+  <% end %>
+  <%= render :partial => 'spree/shared/user_static' %>
+</div>

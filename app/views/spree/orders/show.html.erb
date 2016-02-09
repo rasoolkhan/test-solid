@@ -1,0 +1,25 @@
+<% self.title = 'Natty : Checkout Complete' %>
+<% @body_id = 'thankyou' %>
+<div class="cart-heading">
+  <h1>Order Confirmation</h1>
+</div>
+<div class="checkout-nav">
+  <div class="checkout-nav-bag">
+    <%= link_to 'Back to Home Page', spree.root_path %>
+  </div>
+</div>
+<div class="checkout-page group">
+  <div class="checkout-content checkout-thankyou">
+    <h2>Order #: <span><%= @order.number %></h2>
+    <div class="thankyou-message">
+      <h4>Thank You For Your Order!</h4>
+      <p>A copy of your confirmation has been emailed to you.</p>
+    </div>
+    <div class="checkout-confirm">
+      <%= render :partial => 'spree/shared/order_details', :locals => { :order => @order } %>
+    </div>
+  </div>
+  <div class="checkout-summary">
+    <%= render :partial => '/spree/checkout/summary', :locals => { :order => @order } %>
+  </div>
+</div>

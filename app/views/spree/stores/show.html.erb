@@ -1,0 +1,66 @@
+<% self.title = "Natty : #{@store.name}" %>
+<% @body_id = 'stores-show' %>
+<%= render :partial => 'spree/shared/flash_messages' %>
+<% if @store.approved? || (spree_current_user && spree_current_user.admin?) %>
+  <div class="stores-show-header">
+    <h1 class=""><%= @store.name %></h1>
+    <h6 class=""><%= "#{@store.office_address.address.city}, #{@store.office_address.address.state.abbr}" %></h6>
+  </div>
+  <div class="stores-show-banner">
+    <div class="stores-show-banner-content">
+      <%= image_tag @store.image.attachment.url, class: 'stores-show-banner-image' %>
+      <div class="stores-show-banner-logo"><%= image_tag @store.logo.attachment.url, class: 'stores-show-logo-image' %></div>
+      <div class="stores-show-description">
+        <div class="stores-show-description-left">
+        </div>
+
+        <div class="stores-show-description-right">
+          <div class="stores-show-description-right-about">
+            <h5>About Us</h5>
+            <p><%= simple_format(@store.description) %></p>
+            <a href="#">Learn More</a>
+          </div>
+
+          <!-- <div class="stores-show-description-right-testimonials"> -->
+            <!-- <h5>Testimonials</h5> -->
+          <!-- </div> -->
+
+          <!-- <div class="stores-show-description-right-policies">
+            <h5>Store Policies</h5>
+            <% @store.policies.each do |policy| %>
+              <div class="stores-show-description-right-policy">
+                <p><%= policy.heading %></p>
+                <p><%= policy.description %></p>
+              </div>
+            <% end %>
+          </div> -->
+
+          <div class="stores-show-description-right-share">
+            <a href="#">Share
+                <div><i class="fa fa-facebook"></i> <i class="fa fa-twitter"></i> <i class="fa fa-google-plus"></i> <i class="fa fa-envelope"></i> </div></a>
+            <a href="#">Flag Store</a>
+            <a href="#">Store Policies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stores-show-products-header">
+    <div class="stores-show-products-heading">
+      <h2>Products
+        <span class="filter-invoke">FILTER<i style="margin-left: 10px;"class="fa fa-chevron-circle-right"></i></span>
+      </h2>
+    </div>
+  </div>
+  <div class="stores-show-products-listsection">
+    <div class="stores-show-products-listsection-container">
+        <ul class="stores-show-products-list">
+          <%= render @products %>
+        </ul>
+        <div class="stores-show-products-filter"></div>
+    </div>
+  </div>
+  <div class="paginator">
+    <%= link_to "Load More", store_path(@store, page: @page + 1), remote: true %>
+  </div>
+<% end %>

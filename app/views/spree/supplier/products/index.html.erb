@@ -1,0 +1,53 @@
+<% self.title = "Natty : #{@store.name} : Products" %>
+<% content_for :dashboard do %>
+  <%= render 'spree/shared/error_messages', target: @product %>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center m-t-lg">
+          <h2>Products</h2>
+          <%= link_to 'Add New Product', new_supplier_store_product_path(@store), class: 'btn btn-primary btn-add-product pull-right' %>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <h5>All Products</h5>
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <table class="table table-striped table-bordered table-hover table-dynamic">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>General Information</th>
+                        <th>Variants</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @products.each do |product| %>
+                        <tr>
+                          <td><%= product.name %></td>
+                          <td><%= product.status.capitalize %></td>
+                          <td><%= link_to fa_icon('edit'), edit_supplier_store_product_path(@store, product) %></td>
+                          <td><%= link_to fa_icon('copy'), product.option_types.count > 0 ? supplier_store_product_variants_path(@store, product) : (product.variants.count == 0 ? supplier_store_product_variants_path(@store, product) : edit_supplier_store_product_variant_path(@store, product, product.variants.first)) %></td>
+                          <td><%= link_to fa_icon('trash'), supplier_store_product_path(@store, product), method: :delete, data: { confirm: "Are you sure you want to delete this product and all its variants?" } %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: "spree/supplier/layouts/dashboard" %>

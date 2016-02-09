@@ -1,0 +1,7 @@
+<% if target && target.errors.any? %>
+  <div id="error-dialog">
+    <% target.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>

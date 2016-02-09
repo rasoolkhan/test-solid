@@ -1,0 +1,37 @@
+<div class="form-fields-howitworks group">
+  <h2 class="title-startastore" style="margin-left:37px;">Start a Store</h2>
+  <div class="form-howitworks-carousel">
+    <div>
+      <div class="carousel-step">Step 1</div>
+      <div class="carousel-image"><%= image_tag 'spree/frontend/howitworks-step1.png' %></div>
+      <div class="carousel-title">Tell us about your Store</div>
+      <div class="carousel-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat orci vitae fermentum mollis. Nunc vel pretium dolor. Pellentesque habitarpis est.</div>
+    </div>
+    <div>
+      <div class="carousel-step">Step 2</div>
+      <div class="carousel-image"><%= image_tag 'spree/frontend/howitworks-step2.png' %></div>
+      <div class="carousel-title">Upload Products</div>
+      <div class="carousel-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat orci vitae fermentum mollis. Nunc vel pretium dolor. Pellentesque habitarpis est.</div>
+    </div>
+    <div>
+      <div class="carousel-step">Step 3</div>
+      <div class="carousel-image"><%= image_tag 'spree/frontend/howitworks-step3.png' %></div>
+      <div class="carousel-title">Start Selling</div>
+      <div class="carousel-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam placerat orci vitae fermentum mollis. Nunc vel pretium dolor. Pellentesque habitarpis est.</div>
+    </div>
+  </div>
+  <div class="form-fields" id="apply">
+    <% if spree_current_user %>
+      <div class="form-howitworks-signedin">
+        <h4>Looks like you're already Signed In</h4>
+        <p>Do you want to start a store with this account? If so, click the button below to continue.</p>
+        <%= link_to 'Proceed to Next Step', new_supplier_store_path %>
+        <p>If you wish to start a store with a different account, please log out and create a new account.</p>
+      </div>
+    <% else %>
+      <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
+      <%= hidden_field_tag :user_type, "seller" %>
+    <% end %>
+  </div>
+<h3 class="startastore-availability">Starting a Store is only available on a desktop</h3>
+</div>

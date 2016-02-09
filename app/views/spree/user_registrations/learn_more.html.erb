@@ -1,0 +1,58 @@
+<% self.title = "Natty : Learn More" %>
+<% @body_id = 'page-signup' %>
+<%= render 'spree/shared/error_messages', target: resource %>
+<div class="signup-banner">
+  <%= image_tag 'spree/frontend/seller-signup-banner.png' %>
+</div>
+<div class="signup-content">
+  <%= form_for resource, :as => :spree_user, :url => spree.registration_path(resource), html: {class: 'form-wide'} do |f| %>
+    <div class="learn-more group">
+      <h1>Why Join Natty?</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel leo laoreet, tristique sapien non, porttitor neque. Nullam vitae lectus in neque consectetur scelerisque quis sed eros. Praesent neque diam, lobortis ac eleifend quis, ullamcorper id ex. Nunc leo</p>
+      <div class="learn-more-content learn-more-content-left">
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/learn-more-simple-setup.png' %>
+          <h2>Simple Setup</h2>
+          <p>Set up your own Store on Natty in a few simple steps. Escape the high upfront costs of developing a website and the trouble of handling logistics and an extensive customer service. We know you are busy creating awesome products so let us handle all the technical stuff!</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/learn-more-monthly-charges.png' %>
+          <h2>No Setup Fees or Monthly Charges</h2>
+          <p>Joining and starting a store on Natty is free! As part of our introductory offer, list unlimited number of products with no extra fees. We only charge a commission when you make a sale. Our model is simple – we make money when you make money.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/learn-more-management-tools.png' %>
+          <h2>Powerful Management Tools</h2>
+          <p>Our Seller Dashboard makes it easy to manage, promote and grow your business. Use our built-in store analytics to track sales, revenue and popular products and optimize your strategy. Get valuable customer feedback through product reviews and store testimonials. We also allow customers to contact you with customization requests should you wish to accept them.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/learn-more-support.png' %>
+          <h2>Support and Guidance</h2>
+          <p>Overwhelmed? Need help photographing your products? Refer to our Seller Handbook to do it yourself or call us for help from our photography partners who can get it done at a special Natty discount. Use our extensive Handbook for guidelines on every aspect of selling on Natty. Plus, you can always reach out to the Natty support team through our dedicated seller hotline.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/learn-more-exposure.png' %>
+          <h2>Unparalleled Exposure</h2>
+          <p>Natty gives you the ideal platform to showcase your products, tell your story and sell to a wider group of customers directly from your workshop. We handpick every one of our sellers so you are always surrounded by the best and we are committed to maintaining our standards of quality over quantity even as we grow. So, don’t get lost in a sea of mass-production, get Natty!</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/learn-more-marketing.png' %>
+          <h2>Marketing</h2>
+          <p>Natty’s marketing initiatives always feature you and your story alongside your products to help you establish your brand. We market it to our extensive network through our newsletter, Nattyness™, multiple social media channels and by pitching it to leading bloggers and journalists around the country. We also have some exciting ‘offline’ pop-ups in the pipeline around the country.</p>
+        </div>
+        <div class="learn-more-content-item">
+          <%= image_tag 'spree/frontend/learn-more-flexibility.png' %>
+          <h2>Flexibility</h2>
+          <p>We want our sellers to work on their own terms. We provide you the tools to make selling stress-free and flexible. You want to run a marketing promotion to grow your customer base? Create custom coupon codes or hold a sale with just a few clicks. Need a break? Pause sales on your store and resume them whenever you wish. We even let you decide your turnaround time and the return policy so you can stay on top of things and minimize costs.</p>
+        </div>
+      </div>
+      <div class="learn-more-content learn-more-content-right">
+
+
+
+      </div>
+    </div>
+    <div class="spacer-grey"></div>
+    <%= render :partial => 'spree/shared/user_seller_form', :locals => { :f => f } %>
+  <% end %>
+</div>

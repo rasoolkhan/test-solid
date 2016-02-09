@@ -1,0 +1,86 @@
+.carousel-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 150px;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  font-size: 33 / 18 * 1em;
+  color: rgb(233, 97, 97);
+}
+
+.carousel-arrow-left {
+  left: 0;
+}
+
+.carousel-arrow-right {
+  right: 0;
+ }
+
+.carousel-step {
+  color: rgb(233, 98, 98);
+  text-align: center;
+  margin-bottom: 35px;
+
+  font: {
+    family: Georgia;
+    size: 19 / 18 * 1em;
+    weight: bold;
+    style: italic;
+  }
+}
+
+.carousel-image {
+  text-align: center;
+
+  img {
+    display: inline-block;
+  }
+}
+
+.carousel-title {
+  color: rgb(38, 38, 38);
+  text-align: center;
+  margin-bottom: 25px;
+
+  font: {
+    family: "futura-pt";
+    size: 22 / 16 * 1em;
+  }
+}
+
+.carousel-description {
+  color: rgb(102, 102, 102);
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 22px;
+
+  font: {
+    family: Georgia;
+    size: 14 / 18 * 1em;
+  }
+}
+
+.slick-dots {
+  text-align: center;
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    background-image: url(<%= asset_path 'spree/frontend/carousel-dot-inactive.png' %>);
+  }
+
+  .slick-active .carousel-dot {
+    background-image: url(<%= asset_path 'spree/frontend/carousel-dot-active.png' %>);
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 6px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

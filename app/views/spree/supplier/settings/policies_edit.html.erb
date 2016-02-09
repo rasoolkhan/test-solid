@@ -1,0 +1,76 @@
+<% self.title = "Natty : #{@store.name} : Variants" %>
+<% content_for :dashboard do %>
+  <%= render 'spree/shared/error_messages', target: @product %>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center m-t-lg">
+          <h2>Policies</h2>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <%= form_for [:supplier, @store], url: supplier_store_settings_policies_path(@store), html: {multipart: true, role: 'form', class: 'form-horizontal settings_policies'} do |f| %>
+                    <%= f.fields_for :policies, @policy do |p| %>
+                      <div class="store-policy-fields">
+                        <% if @store.policies.present? %>
+                          <% @store.policies.each_with_index do |policy, index| %>
+                            <fieldset>
+                              <div class="form-group">
+                                <%= label_tag "store[policies_attributes][#{index}][heading]", 'Heading', class: 'col-sm-2 control-label' %>
+                                <div class="col-sm-10">
+                                  <%= text_field_tag "store[policies_attributes][#{index}][heading]", policy.heading, class: 'form-control policy_heading' %>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <%= label_tag "store[policies_attributes][#{index}][description]", 'Description', class: 'col-sm-2 control-label' %>
+                                <div class="col-sm-10">
+                                  <%= text_area_tag "store[policies_attributes][#{index}][description]", policy.description, class: 'form-control policy_description' %>
+                                </div>
+                              </div>
+                              <div class="hr-line-dashed"></div>
+                            </fieldset>
+                          <% end %>
+                        <% else %>
+                          <fieldset>
+                            <div class="form-group">
+                              <%= p.label :heading, 'Heading', class: 'col-sm-2 control-label' %>
+                              <div class="col-sm-10">
+                                <%= p.text_field :heading, class: 'form-control policy_heading' %>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <%= p.label :description, 'Description', class: 'col-sm-2 control-label' %>
+                              <div class="col-sm-10">
+                                <%= p.text_area :description, class: 'form-control policy_description' %>
+                              </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                          </fieldset>
+                        <% end %>
+                      </div>
+                    <% end %>
+                    <div class="form-group">
+                      <div class="col-sm-4 pull-right right-button form-policies-buttons">
+                        <button class="btn btn-sm btn-white m-t-n-xs form-policies-add"><strong>Add Row</strong></button>
+                        <button class="btn btn-primary" type="submit">Save changes</button>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: "spree/supplier/layouts/dashboard" %>

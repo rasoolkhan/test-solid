@@ -1,0 +1,6 @@
+<% param_prefix = "payment_source[#{payment_method.id}]" %>
+<% if @order.bill_address %>
+  <%= fields_for "#{param_prefix}[address_attributes]", @order.bill_address do |f| %>
+    <%= render :partial => 'spree/address/form_hidden', :locals => { :form => f } %>
+  <% end %>
+<% end %>
